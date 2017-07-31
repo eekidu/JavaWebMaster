@@ -1,0 +1,6 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="JavaWebMaster">
+    <output-path>$PROJECT_DIR$/out/artifacts/JavaWebMaster</output-path>
+    <root id="archive" name="JavaWebMaster.war" />
+  </artifact>
+</component>

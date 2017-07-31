@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="JavaWebMaster:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="JavaWebMaster.war">
+      <element id="artifact" artifact-name="JavaWebMaster:war exploded" />
+    </root>
+  </artifact>
+</component>
