@@ -26,4 +26,4 @@ hs_err_pid*
 .idea/workspace.xml
 target/
 JavaWebMaster.iml
-idea/libraries/
+.idea/libraries/
