@@ -2,7 +2,6 @@ package com.kee;
 
 
 import okhttp3.*;
-import okhttp3.internal.framed.Header;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
@@ -51,16 +50,11 @@ public class BaseTest {
         }
     }
 
-    @Test
-    public void testIp() {
-        System.out.println(getRandomIp());
-    }
 
     /*
          * 随机生成国内IP地址
          */
     public static String getRandomIp() {
-
         // ip范围
         int[][] range = {{607649792, 608174079},// 36.56.0.0-36.63.255.255
                 {1038614528, 1039007743},// 61.232.0.0-61.237.255.255
@@ -80,6 +74,27 @@ public class BaseTest {
         return ip;
     }
 
+    //27.128.214.0  27.128.214.255
+    public static String getHanDanRandomIp() {
+        // ip范围
+        int[][] range = {{461428224, 461428479},
+                {461483008, 461483263},//
+                {465305600, 465306931},
+                {465306933, 465312255},
+                {465312256, 465312511},
+                {465312512, 465324287},
+                {465324288, 465324543},
+                {465324544, 465325823},
+                {465325824, 465326079},
+        };
+
+        Random rdint = new Random();
+        int index = rdint.nextInt(9);
+        String ip = num2ip(range[index][0] + new Random().nextInt(range[index][1] - range[index][0]));
+        return ip;
+    }
+
+
     /*
      * 将十进制转换成ip地址
      */
@@ -95,14 +110,31 @@ public class BaseTest {
         return x;
     }
 
+    public static int ip2num(String ip) {
+        String[] split = ip.split("\\.");
+        int num = (Integer.valueOf(split[0]) << 24) + (Integer.valueOf(split[1]) << 16) + (Integer.valueOf(split[2]) << 8) + (Integer.valueOf(split[3]));
+        return num;
+    }
 
-    public static List<Integer> myset = Arrays.asList(183,
-            124,
-            260,
-            400,
-            259,
-            551,
-            313);
+
+    //11	27.188.80.0	27.188.98.255	河北省邯郸市 电信
+//12	27.188.99.0	27.188.99.255	河北省邯郸市成安县 电信
+//13	27.188.100.0	27.188.208.255	河北省邯郸市 电信
+//14	27.188.209.0	27.188.209.255	河北省邯郸市成安县 电信
+//15	27.188.210.0	27.188.216.255	河北省邯郸市 电信
+//16	27.188.217.0	27.188.217.255	河北省邯郸市临漳县 电信
+//17	27.188.218.0	27.188.218.255	河北省邯郸市 电信
+//18	27.188.219.0	27.188.219.255	河北省邯郸市涉县 电信
+//19	27.188.220.0	27.188.252.255	河北省邯郸市 电信
+//20	27.188.253.0	27.188.253.255	河北省邯郸市磁县 电信
+//21	27.188.254.0	27.188.255.255
+    @Test
+    public void testIpd() {
+        System.out.println(ip2num("27.188.73.0") + "," + ip2num("27.188.73.255"));
+        System.out.println(ip2num("27.188.74.0") + "," + ip2num("27.188.78.255"));
+        System.out.println(ip2num("27.188.79.0") + "," + ip2num("27.188.79.255"));
+        System.out.println(ip2num("27.129.172.71"));
+    }
 
     @Test
     public void shouw() {
@@ -117,6 +149,43 @@ public class BaseTest {
         }
         System.out.println(stringBuffer.toString());
     }
+
+
+    private static long DEFAULT_TIME_OUT = 30;
+    private static OkHttpClient okHttpClient = new OkHttpClient.Builder().connectTimeout(DEFAULT_TIME_OUT, TimeUnit.SECONDS)
+            //设置写超时
+            .writeTimeout(DEFAULT_TIME_OUT, TimeUnit.SECONDS)
+            //设置读超时
+            .readTimeout(DEFAULT_TIME_OUT, TimeUnit.SECONDS).build();
+
+
+    public static String createSeeid(int length) {
+        String substring = UUID.randomUUID().toString().replace("-", "").substring(0, length);
+        return substring;
+    }
+
+
+    @Test
+    public void testHash() {
+//        655f8b4b
+
+//        String temp="7e25ea2d858e7860848332238561d669";
+//        String temp = "210.12.221.245";
+//        String temp = "id=tom_weixin_zl:ajax&act=zhuli&act_id=1&zlkey=92&openid=&subscribe=1&formkey=7e25ea2d858e7860848332238561d669";
+        String temp = "d4ajnusjqa8iprhtoj66a24fc5";
+        String s = Integer.toHexString(temp.hashCode());
+        System.out.println(s);
+
+    }
+
+    String[] weixinClient = new String[]{
+            "Mozilla/5.0 (Linux; Android 6.0.1; M2 E Build/MMB29U; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/53.0.2785.49 Mobile MQQBrowser/6.2 TBS/043409 Safari/537.36 MicroMessenger/6.5.10.1080 NetType/WIFI Language/zh_CN",
+            "Mozilla/5.0 (Linux; Android 6.0.1; M1 E Build/MMB29U; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/53.0.2785.49 Mobile MQQBrowser/6.2 TBS/043409 Safari/537.36 MicroMessenger/6.5.10.1080 NetType/WIFI Language/zh_CN",
+            "Mozilla/5.0 (iPhone; CPU iPhone OS 10_3_3 like Mac OS X) AppleWebKit/603.3.8 (KHTML, like Gecko) Mobile/14G60 MicroMessenger/6.5.8 NetType/WIFI Language/zh_CN",
+            "Mozilla/5.0 (iPhone; CPU iPhone OS 10_2_1 like Mac OS X) AppleWebKit/603.3.8 (KHTML, like Gecko) Mobile/14G60 MicroMessenger/6.5.8 NetType/WIFI Language/zh_CN",
+            "Mozilla/5.0 (iPhone; CPU iPhone OS 10_1_1 like Mac OS X) AppleWebKit/603.3.8 (KHTML, like Gecko) Mobile/14G60 MicroMessenger/6.5.8 NetType/WIFI Language/zh_CN",
+            "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 Safari/537.36 MicroMessenger/6.5.2.501 NetType/WIFI WindowsWechat QBCore/3.43.556.400 QQBrowser/9.0.2524.400",
+    };
 
 
     private static String[] ips = new String[]{
@@ -180,146 +249,72 @@ public class BaseTest {
             "221.192.63.181","221.192.63.182","221.192.63.183","221.192.63.184","221.192.63.185","221.192.63.186","221.192.63.187","221.192.63.188","221.192.63.189","221.192.63.190",
             "221.192.63.191","221.192.63.192","221.192.63.193",};
 
-    private static long DEFAULT_TIME_OUT = 30;
 
     @Test
-    public void BaYue() {
-        OkHttpClient okHttpClient = new OkHttpClient.Builder().connectTimeout(DEFAULT_TIME_OUT, TimeUnit.SECONDS)
-                //设置写超时
-                .writeTimeout(DEFAULT_TIME_OUT, TimeUnit.SECONDS)
-                //设置读超时
-                .readTimeout(DEFAULT_TIME_OUT, TimeUnit.SECONDS).build();
+    public void NewBaYue() {
+        String firstUrl = "http://jiaoyu.schoolma.net/plugin.php?id=tom_weixin_zl&act_id=1&zlkey=92";
+        String sessionid;
+        String url2;
 
-        for (int j = 0; j < 50; j++) {
-            String ip;
-            int position;
-            Request request = new Request.Builder().url("http://jiaoyu.schoolma.net/plugin.php?id=tom_weixin_zl:ajax&act=zhuli&act_id=1&zlkey=92&openid=&subscribe=1&formkey=7e25ea2d858e7860848332238561d669&formhash=280b0f83")
-                    .addHeader("X-Forwarded-For", ip = ips[position = new Random().nextInt(ips.length)])
-                    .addHeader("Cookie", "XCxw_2132_saltkey=fIV0v0G7; XCxw_2132_lastvisit=1509661111; PHPSESSID=" + createSeeid() + "; XCxw_2132_sid=EHN11b; XCxw_2132_lastact=1501639399%09plugin.php%09")
+        for (int i = 0; i < 300; i++) {
+            String baseCookie = "XCxw_2132_saltkey=" + createSeeid(8) + "; XCxw_2132_lastvisit="+ (new Date().getTime() / 1000-new Random().nextInt(1000*60*60*24*3))+"; XCxw_2132_sid=" + createSeeid(6) + "; XCxw_2132_lastact=" + new Date().getTime() / 1000 + "%09plugin.php%09; ";
+            String ipfinal = getHanDanRandomIp();
+//            String ipfinal = ips[new Random().nextInt(ips.length)];
+//            String ipfinal = "210.12.221.245";
+            String weixinClientName = weixinClient[new Random().nextInt(weixinClient.length)];
+
+            Request request = new Request.Builder().url(firstUrl)
+                    .addHeader("X-Forwarded-For", ipfinal)
+                    .addHeader("User-Agent", weixinClientName)
+                    .addHeader("Cookie", baseCookie)
                     .get().build();
-            for (int i = 0; i < 1; i++) {
-                Call call = okHttpClient.newCall(request);
-                try {
-                    Response execute = call.execute();
-                    String string = execute.body().string();
-                    System.out.println("ip = " + ip + "位置 = " + position + "\n返回结果：" + string);
-                    Thread.sleep(new Random().nextInt(1000 * 60*2));
-                } catch (IOException e) {
-                    e.printStackTrace();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+            Call call = okHttpClient.newCall(request);
+            try {
+                Response execute = call.execute();
+                sessionid = execute.header("Set-Cookie");
+                sessionid = sessionid.substring(0, sessionid.indexOf(";"));
+                System.out.println("本次session = " + sessionid);
+                String string = execute.body().string();
+                String source = string.substring(string.indexOf("type: \"GET\","), string.indexOf("dataType : \"json\","));
+                url2 = source.substring(source.indexOf("http"), source.lastIndexOf("\""));
+                System.out.println("投票地址　＝　" + url2);
 
+                String newCookie = baseCookie + sessionid;
+                System.out.println(newCookie);
 
-//                call.enqueue(new Callback() {
-//                    @Override
-//                    public void onFailure(Call call, IOException e) {
-//                        e.printStackTrace();
-//                    }
-//
-//                    @Override
-//                    public void onResponse(Call call, Response response) throws IOException {
-//                        System.out.println(response.body().string());
-//                    }
-//                });
-//            }
-//            try {
-//                Thread.sleep(new Random().nextInt(1000 * 10));
-//            } catch (InterruptedException e) {
-//                e.printStackTrace();
-//            }
+                Request request2 = new Request.Builder().url(url2)
+                        .addHeader("X-Forwarded-For", ipfinal)
+//                        .addHeader("X-Real-IP", ipfinal)
+//                        .addHeader("WL-Proxy-Client-IP", ipfinal)
+//                        .addHeader("Client_Ip", ipfinal)
+                        .addHeader("Referer", firstUrl)
+                        .addHeader("Cookie", newCookie)
+                        .addHeader("User-Agent", weixinClientName)
+                        .addHeader("X-Requested-With", "XMLHttpRequest")
+                        .get().build();
+
+                Call call2 = okHttpClient.newCall(request2);
+                Response execute2 = call2.execute();
+                String string2 = execute2.body().string();
+                System.out.println("ip = " + ipfinal + "\n返回结果：" + string2);
+
+                Request request6 = new Request.Builder().url("http:192.168.8.199:8080/api/cookie")
+                        .addHeader("X-Forwarded-For", ipfinal)
+                        .addHeader("Referer", firstUrl)
+                        .addHeader("Cookie", newCookie)
+                        .addHeader("User-Agent", weixinClientName)
+                        .addHeader("X-Requested-With", "XMLHttpRequest")
+                        .get().build();
+
+                  okHttpClient.newCall(request6).execute().body().string();
+              Thread.sleep(60*1000);
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
         }
     }
 
-
-    public static String createSeeid() {
-        String substring = UUID.randomUUID().toString().replace("-", "").substring(0, 26);
-        System.out.println(substring);
-        return substring;
-    }
-
-    @Test
-    public void dealIp() {
-        String id = "221.192.62.6 221.192.62.7 221.192.62.8 221.192.62.9 221.192.62.10 221.192.62.11\n" +
-                "221.192.62.12 221.192.62.13 221.192.62.14 221.192.62.15 221.192.62.16 221.192.62.17\n" +
-                "221.192.62.18 221.192.62.19 221.192.62.20 221.192.62.21 221.192.62.22 221.192.62.23\n" +
-                "221.192.62.24 221.192.62.25 221.192.62.26 221.192.62.27 221.192.62.28 221.192.62.29\n" +
-                "221.192.62.30 221.192.62.31 221.192.62.32 221.192.62.33 221.192.62.34 221.192.62.35\n" +
-                "221.192.62.36 221.192.62.37 221.192.62.38 221.192.62.39 221.192.62.40 221.192.62.41\n" +
-                "221.192.62.42 221.192.62.43 221.192.62.44 221.192.62.45 221.192.62.46 221.192.62.47\n" +
-                "221.192.62.48 221.192.62.49 221.192.62.50 221.192.62.51 221.192.62.52 221.192.62.53\n" +
-                "221.192.62.54 221.192.62.55 221.192.62.56 221.192.62.57 221.192.62.58 221.192.62.59\n" +
-                "221.192.62.60 221.192.62.61 221.192.62.62 221.192.62.63 221.192.62.64 221.192.62.65\n" +
-                "221.192.62.66 221.192.62.67 221.192.62.68 221.192.62.69 221.192.62.70 221.192.62.71\n" +
-                "221.192.62.72 221.192.62.73 221.192.62.74 221.192.62.75 221.192.62.76 221.192.62.77\n" +
-                "221.192.62.78 221.192.62.79 221.192.62.80 221.192.62.81 221.192.62.82 221.192.62.83\n" +
-                "221.192.62.84 221.192.62.85 221.192.62.86 221.192.62.87 221.192.62.88 221.192.62.89\n" +
-                "221.192.62.90 221.192.62.91 221.192.62.92 221.192.62.93 221.192.62.94 221.192.62.95\n" +
-                "221.192.62.96 221.192.62.97 221.192.62.98 221.192.62.99 221.192.62.100 221.192.62.101\n" +
-                "221.192.62.102 221.192.62.103 221.192.62.104 221.192.62.105 221.192.62.106 221.192.62.107\n" +
-                "221.192.62.108 221.192.62.109 221.192.62.110 221.192.62.111 221.192.62.112 221.192.62.113\n" +
-                "221.192.62.114 221.192.62.115 221.192.62.116 221.192.62.117 221.192.62.118 221.192.62.119\n" +
-                "221.192.62.120 221.192.62.121 221.192.62.122 221.192.62.123 221.192.62.124 221.192.62.125\n" +
-                "221.192.62.126 221.192.62.127 221.192.62.128 221.192.62.129 221.192.62.130 221.192.62.131\n" +
-                "221.192.62.132 221.192.62.133 221.192.62.134 221.192.62.135 221.192.62.136 221.192.62.137\n" +
-                "221.192.62.138 221.192.62.139 221.192.62.140 221.192.62.141 221.192.62.142 221.192.62.143\n" +
-                "221.192.62.144 221.192.62.145 221.192.62.146 221.192.62.147 221.192.62.148 221.192.62.149\n" +
-                "221.192.62.150 221.192.62.151 221.192.62.152 221.192.62.153 221.192.62.154 221.192.62.155\n" +
-                "221.192.62.156 221.192.62.157 221.192.62.158 221.192.62.159 221.192.62.160 221.192.62.161\n" +
-                "221.192.62.162 221.192.62.163 221.192.62.164 221.192.62.165 221.192.62.166 221.192.62.167\n" +
-                "221.192.62.168 221.192.62.169 221.192.62.170 221.192.62.171 221.192.62.172 221.192.62.173\n" +
-                "221.192.62.174 221.192.62.175 221.192.62.176 221.192.62.177 221.192.62.178 221.192.62.179\n" +
-                "221.192.62.180 221.192.62.181 221.192.62.182 221.192.62.183 221.192.62.184 221.192.62.185\n" +
-                "221.192.62.186 221.192.62.187 221.192.62.188 221.192.62.189 221.192.62.190 221.192.62.191\n" +
-                "221.192.62.192 221.192.62.193 221.192.62.194 221.192.62.195 221.192.62.196 221.192.62.197\n" +
-                "221.192.62.198 221.192.62.199 221.192.62.200 221.192.62.201 221.192.62.202 221.192.62.203\n" +
-                "221.192.62.204 221.192.62.205 221.192.62.206 221.192.62.207 221.192.62.208 221.192.62.209\n" +
-                "221.192.62.210 221.192.62.211 221.192.62.212 221.192.62.213 221.192.62.214 221.192.62.215\n" +
-                "221.192.62.216 221.192.62.217 221.192.62.218 221.192.62.219 221.192.62.220 221.192.62.221\n" +
-                "221.192.62.222 221.192.62.223 221.192.62.224 221.192.62.225 221.192.62.226 221.192.62.227\n" +
-                "221.192.62.228 221.192.62.229 221.192.62.230 221.192.62.231 221.192.62.232 221.192.62.233\n" +
-                "221.192.62.234 221.192.62.235 221.192.62.236 221.192.62.237 221.192.62.238 221.192.62.239\n" +
-                "221.192.62.240 221.192.62.241 221.192.62.242 221.192.62.243 221.192.62.244 221.192.62.245\n" +
-                "221.192.62.246 221.192.62.247 221.192.62.248 221.192.62.249 221.192.62.250 221.192.62.251\n" +
-                "221.192.62.252 221.192.62.253 221.192.62.254 221.192.62.255 221.192.63.0 221.192.63.1\n" +
-                "221.192.63.2 221.192.63.3 221.192.63.4 221.192.63.5 221.192.63.6 221.192.63.7\n" +
-                "221.192.63.8 221.192.63.9 221.192.63.10 221.192.63.11 221.192.63.12 221.192.63.13\n" +
-                "221.192.63.14 221.192.63.15 221.192.63.16 221.192.63.17 221.192.63.18 221.192.63.19\n" +
-                "221.192.63.20 221.192.63.21 221.192.63.22 221.192.63.23 221.192.63.24 221.192.63.25\n" +
-                "221.192.63.26 221.192.63.27 221.192.63.28 221.192.63.29 221.192.63.30 221.192.63.31\n" +
-                "221.192.63.32 221.192.63.33 221.192.63.34 221.192.63.35 221.192.63.36 221.192.63.37\n" +
-                "221.192.63.38 221.192.63.39 221.192.63.40 221.192.63.41 221.192.63.42 221.192.63.43\n" +
-                "221.192.63.44 221.192.63.45 221.192.63.46 221.192.63.47 221.192.63.48 221.192.63.49\n" +
-                "221.192.63.50 221.192.63.51 221.192.63.52 221.192.63.53 221.192.63.54 221.192.63.55\n" +
-                "221.192.63.56 221.192.63.57 221.192.63.58 221.192.63.59 221.192.63.60 221.192.63.61\n" +
-                "221.192.63.62 221.192.63.63 221.192.63.64 221.192.63.65 221.192.63.66 221.192.63.67\n" +
-                "221.192.63.68 221.192.63.69 221.192.63.70 221.192.63.71 221.192.63.72 221.192.63.73\n" +
-                "221.192.63.74 221.192.63.75 221.192.63.76 221.192.63.77 221.192.63.78 221.192.63.79\n" +
-                "221.192.63.80 221.192.63.81 221.192.63.82 221.192.63.83 221.192.63.84 221.192.63.85\n" +
-                "221.192.63.86 221.192.63.87 221.192.63.88 221.192.63.89 221.192.63.90 221.192.63.91\n" +
-                "221.192.63.92 221.192.63.93 221.192.63.94 221.192.63.95 221.192.63.96 221.192.63.97\n" +
-                "221.192.63.98 221.192.63.99 221.192.63.100 221.192.63.101 221.192.63.102 221.192.63.103\n" +
-                "221.192.63.104 221.192.63.105 221.192.63.106 221.192.63.107 221.192.63.108 221.192.63.109\n" +
-                "221.192.63.110 221.192.63.111 221.192.63.112 221.192.63.113 221.192.63.114 221.192.63.115\n" +
-                "221.192.63.116 221.192.63.117 221.192.63.118 221.192.63.119 221.192.63.120 221.192.63.121\n" +
-                "221.192.63.122 221.192.63.123 221.192.63.124 221.192.63.125 221.192.63.126 221.192.63.127\n" +
-                "221.192.63.128 221.192.63.129 221.192.63.130 221.192.63.131 221.192.63.132 221.192.63.133\n" +
-                "221.192.63.134 221.192.63.135 221.192.63.136 221.192.63.137 221.192.63.138 221.192.63.139\n" +
-                "221.192.63.140 221.192.63.141 221.192.63.142 221.192.63.143 221.192.63.144 221.192.63.145\n" +
-                "221.192.63.146 221.192.63.147 221.192.63.148 221.192.63.149 221.192.63.150 221.192.63.151\n" +
-                "221.192.63.152 221.192.63.153 221.192.63.154 221.192.63.155 221.192.63.156 221.192.63.157\n" +
-                "221.192.63.158 221.192.63.159 221.192.63.160 221.192.63.161 221.192.63.162 221.192.63.163\n" +
-                "221.192.63.164 221.192.63.165 221.192.63.166 221.192.63.167 221.192.63.168 221.192.63.169\n" +
-                "221.192.63.170 221.192.63.171 221.192.63.172 221.192.63.173 221.192.63.174 221.192.63.175\n" +
-                "221.192.63.176 221.192.63.177 221.192.63.178 221.192.63.179 221.192.63.180 221.192.63.181\n" +
-                "221.192.63.182 221.192.63.183 221.192.63.184 221.192.63.185 221.192.63.186 221.192.63.187\n" +
-                "221.192.63.188 221.192.63.189 221.192.63.190 221.192.63.191 221.192.63.192 221.192.63.193";
-        String[] split = id.replace("\n", " ").split(" ");
-        StringBuffer builder = new StringBuffer();
-        for (String s : split) {
-            builder.append("\"" + s + "\",");
-        }
-        System.out.println(builder.toString());
-    }
 }
+
