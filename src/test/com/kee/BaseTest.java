@@ -2,10 +2,16 @@ package com.kee;
 
 
 import okhttp3.OkHttpClient;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import javax.imageio.ImageIO;
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -27,6 +33,19 @@ public class BaseTest {
             //设置读超时
             .readTimeout(DEFAULT_TIME_OUT, TimeUnit.SECONDS).build();
 
+
+    @Test
+    public void test() throws AWTException, IOException {
+
+
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        Rectangle screenRectangle = new Rectangle(screenSize);
+        Robot robot = new Robot();
+        BufferedImage image = robot.createScreenCapture(screenRectangle);
+        ImageIO.write(image, "png", new File("D:\\pasht"));
+
+
+    }
 
 }
 

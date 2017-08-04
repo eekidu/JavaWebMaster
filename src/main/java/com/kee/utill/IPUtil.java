@@ -42,11 +42,11 @@ public class IPUtil {
                 {465324288, 465324543},
                 {465324544, 465325823},
                 {465325824, 465326079},
-                {465326080,465330943},
-                {465330944,465331199},
-                {465331200,465359103},
-                {465359104,465361151},
-                {465361152,465371135},
+                {465326080, 465330943},
+                {465330944, 465331199},
+                {465331200, 465359103},
+                {465359104, 465361151},
+                {465361152, 465371135},
         };
 
         Random rdint = new Random();
@@ -59,7 +59,7 @@ public class IPUtil {
     /*
      * 将十进制转换成ip地址
      */
-    public  static String num2ip(int ip) {
+    public static String num2ip(int ip) {
         int[] b = new int[4];
         String x = "";
 
@@ -139,7 +139,7 @@ public class IPUtil {
             "221.192.63.181", "221.192.63.182", "221.192.63.183", "221.192.63.184", "221.192.63.185", "221.192.63.186", "221.192.63.187", "221.192.63.188", "221.192.63.189", "221.192.63.190",
             "221.192.63.191", "221.192.63.192", "221.192.63.193",};
 
-    public static String[] weixinClient = new String[]{
+    private static String[] weixinClient = new String[]{
             "Mozilla/5.0 (Linux; Android 6.0.1; 1503-M02 Build/MRA58K) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/37.0.0.0 Mobile MQQBrowser/6.2 TBS/036558 Safari/537.36 MicroMessenger/6.3.25.861 NetType/WIFI Language/zh_CN",
             "Mozilla/5.0 (Linux; Android 6.0.1; M2 E Build/MMB29U; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/53.0.2785.49 Mobile MQQBrowser/6.2 TBS/043409 Safari/537.36 MicroMessenger/6.5.10.1080 NetType/WIFI Language/zh_CN",
             "Mozilla/5.0 (Linux; Android 6.0.1; M1 E Build/MMB29U; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/53.0.2785.49 Mobile MQQBrowser/6.2 TBS/043409 Safari/537.36 MicroMessenger/6.5.10.1080 NetType/WIFI Language/zh_CN",
@@ -156,4 +156,8 @@ public class IPUtil {
             "Mozilla/5.0 (iPhone; CPU iPhone OS 10_1_1 like Mac OS X) AppleWebKit/603.3.8 (KHTML, like Gecko) Mobile/14G60 MicroMessenger/6.5.8 NetType/WIFI Language/zh_CN",
             "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 Safari/537.36 MicroMessenger/6.5.2.501 NetType/WIFI WindowsWechat QBCore/3.43.556.400 QQBrowser/9.0.2524.400",
     };
+
+    public static String getWeixinClient() {
+        return weixinClient[new Random().nextInt(weixinClient.length)];
+    }
 }

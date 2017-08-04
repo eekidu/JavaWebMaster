@@ -16,14 +16,14 @@ import java.util.concurrent.TimeUnit;
 public class VoteTest extends BaseTest {
     @Test
     public void normalTouPiao() {
-        for (int j = 0; j < 200; j++) {
+        for (int j = 0; j < 80; j++) {
             OkHttpClient okHttpClient = new OkHttpClient();
             FormBody.Builder builder = new FormBody.Builder();
             builder.add("uid", "196");
             String ip;
             Request request = new Request.Builder().url(" http://www.1jiyi.com/addtongji.php")
-
-                    .addHeader("X-Forwarded-For", ip = IPUtil.getRandomIp())
+                    .addHeader("User-Agent", IPUtil.getWeixinClient())
+                    .addHeader("X-Forwarded-For", ip = IPUtil.getHanDanRandomIp())
                     .post(builder.build()).
                             build();
             System.out.println(ip);
@@ -33,7 +33,7 @@ public class VoteTest extends BaseTest {
                     Response execute = call.execute();
                     String string = execute.body().string();
                     System.out.println(string);
-                    Thread.sleep(new Random().nextInt(2000));
+                    Thread.sleep(new Random().nextInt(1000*60));
                 } catch (IOException e) {
                     e.printStackTrace();
                 } catch (InterruptedException e) {
@@ -99,7 +99,7 @@ public class VoteTest extends BaseTest {
         for (int i = 0; i < 300; i++) {
             String baseCookie = "XCxw_2132_saltkey=" + createSeeid(8) + "; XCxw_2132_lastvisit=" + (new Date().getTime() / 1000 - new Random().nextInt(1000 * 60 * 60 * 24 * 3)) + "; XCxw_2132_sid=" + createSeeid(6) + "; XCxw_2132_lastact=" + new Date().getTime() / 1000 + "%09plugin.php%09; ";
             String ipfinal = IPUtil.getHanDanRandomIp();
-            String weixinClientName = IPUtil.weixinClient[new Random().nextInt(IPUtil.weixinClient.length)];
+            String weixinClientName = IPUtil.getWeixinClient();
 
             Request request = new Request.Builder().url(firstUrl)
                     .addHeader("X-Forwarded-For", ipfinal)
