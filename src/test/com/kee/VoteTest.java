@@ -1,44 +1,193 @@
 package com.kee;
 
+import com.google.gson.*;
+import com.google.gson.reflect.TypeToken;
 import com.kee.utill.IPUtil;
 import okhttp3.*;
 import org.junit.Test;
 
 import java.io.IOException;
-import java.util.Date;
-import java.util.Random;
-import java.util.UUID;
+import java.util.*;
 import java.util.concurrent.TimeUnit;
 
 /**
  * Created by kee on 2017/8/4.
  */
 public class VoteTest extends BaseTest {
+
+    class person {
+
+        /**
+         * id : 15
+         * title : 吴庆波
+         * thumb : http://www.1jiyi.com/uploadfile/2017/0728/20170728100536894.jpg
+         * tongjil : 847
+         * depart : 万浩家园店
+         * identifier : 002
+         */
+
+        private String id;
+        private String title;
+        private String thumb;
+        private String tongjil;
+        private String depart;
+        private String identifier;
+
+        public String getId() {
+            return id;
+        }
+
+        public void setId(String id) {
+            this.id = id;
+        }
+
+        public String getTitle() {
+            return title;
+        }
+
+        public void setTitle(String title) {
+            this.title = title;
+        }
+
+        public String getThumb() {
+            return thumb;
+        }
+
+        public void setThumb(String thumb) {
+            this.thumb = thumb;
+        }
+
+        public String getTongjil() {
+            return tongjil;
+        }
+
+        public void setTongjil(String tongjil) {
+            this.tongjil = tongjil;
+        }
+
+        public String getDepart() {
+            return depart;
+        }
+
+        public void setDepart(String depart) {
+            this.depart = depart;
+        }
+
+        public String getIdentifier() {
+            return identifier;
+        }
+
+        public void setIdentifier(String identifier) {
+            this.identifier = identifier;
+        }
+
+        @Override
+        public String toString() {
+            return "person{" +
+                    "id='" + id + '\'' +
+                    ", title='" + title + '\'' +
+                    ", tongjil='" + tongjil + '\'' +
+                    ", depart='" + depart + '\'' +
+                    ", identifier='" + identifier + '\'' +
+                    ", thumb='" + thumb + '\'' +
+                    '}';
+        }
+    }
+
+    @Test
+    public void getList() {
+        FormBody formBody = new FormBody.Builder()
+                .add("pagesize", "311")
+                .add("currpage", "1")
+                .build();
+        Request request = new Request.Builder().url("http://www.1jiyi.com/votenew.php")
+                .post(formBody)
+                .addHeader("User-Agent", IPUtil.getWeixinClient())
+                .addHeader("X-Forwarded-For", IPUtil.getHanDanRandomIp())
+                .build();
+
+        try {
+            String string = okHttpClient.newCall(request).execute().body().string();
+            JsonObject parse = new JsonParser().parse(string).getAsJsonObject();
+            JsonArray alldata = parse.get("alldata").getAsJsonArray();
+            Gson gson = new Gson();
+            List<person> peoples = gson.fromJson(alldata, new TypeToken<ArrayList<person>>() {
+            }.getType());
+            Collections.sort(peoples, new Comparator<person>() {
+                public int compare(person o1, person o2) {
+                    return Integer.valueOf(o2.getTongjil()) - Integer.valueOf(o1.getTongjil());
+                }
+            });
+
+            for (int i = 0; i < 30; i++) {
+                System.out.println(i + 1 + " : " + peoples.get(i));
+
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
     @Test
     public void normalTouPiao() {
-        for (int j = 0; j < 80; j++) {
-            OkHttpClient okHttpClient = new OkHttpClient();
-            FormBody.Builder builder = new FormBody.Builder();
-            builder.add("uid", "196");
-            String ip;
-            Request request = new Request.Builder().url(" http://www.1jiyi.com/addtongji.php")
-                    .addHeader("User-Agent", IPUtil.getWeixinClient())
-                    .addHeader("X-Forwarded-For", ip = IPUtil.getHanDanRandomIp())
-                    .post(builder.build()).
-                            build();
-            System.out.println(ip);
-            for (int i = 0; i < 5; i++) {
-                Call call = okHttpClient.newCall(request);
-                try {
-                    Response execute = call.execute();
-                    String string = execute.body().string();
-                    System.out.println(string);
-                    Thread.sleep(new Random().nextInt(1000*60));
-                } catch (IOException e) {
-                    e.printStackTrace();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
+        final OkHttpClient okHttpClient = new OkHttpClient();
+        final FormBody.Builder builder = new FormBody.Builder();
+        builder.add("uid", "145");
+        for (int k = 0; k < 5; k++) {
+            new Thread() {
+                @Override
+                public void run() {
+                    for (int j = 0; j < 10; j++) {
+                        String ip;
+                        final Request request = new Request.Builder().url(" http://www.1jiyi.com/addtongji.php")
+                                .addHeader("User-Agent", IPUtil.getWeixinClient())
+                                .addHeader("X-Forwarded-For", ip = IPUtil.getHanDanRandomIp())
+                                .post(builder.build()).
+                                        build();
+                        System.out.println(ip);
+                        for (int i = 0; i < 5; i++) {
+                            Call call = okHttpClient.newCall(request);
+                            call.enqueue(new Callback() {
+                                public void onFailure(Call call, IOException e) {
+
+                                }
+
+                                public void onResponse(Call call, Response response) throws IOException {
+                                    String string = response.body().string();
+                                    System.out.println(string);
+                                }
+                            });
+//                new Thread() {
+//                    @Override
+//                    public void run() {
+//                        try {
+//                            Call call = okHttpClient.newCall(request);
+//                            Response execute = call.execute();
+//                            String string = execute.body().string();
+//                            System.out.println(string);
+//                        } catch (IOException e) {
+//                            e.printStackTrace();
+//                        }
+//                    }
+//                }.start();
+                        }
+//                        try {
+//                            Thread.sleep(new Random().nextInt(500));
+//                        } catch (InterruptedException e) {
+//                            e.printStackTrace();
+//                        }
+                    }
                 }
+            }.start();
+
+        }
+        while (true) {
+            try {
+                System.out.println("正在执行的数量 = " + okHttpClient.dispatcher().runningCallsCount());
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
         }
     }
