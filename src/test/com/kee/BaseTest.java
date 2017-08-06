@@ -35,7 +35,7 @@ public class BaseTest {
 
 
     @Test
-    public void test() throws AWTException, IOException {
+    public void test() throws AWTException, IOException, InterruptedException {
 
 
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();

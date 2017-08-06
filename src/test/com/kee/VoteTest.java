@@ -8,6 +8,7 @@ import org.junit.Test;
 
 import java.io.IOException;
 import java.util.*;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -15,7 +16,7 @@ import java.util.concurrent.TimeUnit;
  */
 public class VoteTest extends BaseTest {
 
-    class person {
+    class Person {
 
         /**
          * id : 15
@@ -83,7 +84,7 @@ public class VoteTest extends BaseTest {
 
         @Override
         public String toString() {
-            return "person{" +
+            return "Person{" +
                     "id='" + id + '\'' +
                     ", title='" + title + '\'' +
                     ", tongjil='" + tongjil + '\'' +
@@ -111,34 +112,59 @@ public class VoteTest extends BaseTest {
             JsonObject parse = new JsonParser().parse(string).getAsJsonObject();
             JsonArray alldata = parse.get("alldata").getAsJsonArray();
             Gson gson = new Gson();
-            List<person> peoples = gson.fromJson(alldata, new TypeToken<ArrayList<person>>() {
+            List<Person> peoples = gson.fromJson(alldata, new TypeToken<ArrayList<Person>>() {
             }.getType());
-            Collections.sort(peoples, new Comparator<person>() {
-                public int compare(person o1, person o2) {
+            Collections.sort(peoples, new Comparator<Person>() {
+                public int compare(Person o1, Person o2) {
                     return Integer.valueOf(o2.getTongjil()) - Integer.valueOf(o1.getTongjil());
                 }
             });
 
-            for (int i = 0; i < 30; i++) {
-                System.out.println(i + 1 + " : " + peoples.get(i));
-
+            Person guojing = null;
+            for (int i = 0; i < 15; i++) {
+                Person person = peoples.get(i);
+                System.out.println(i + 1 + " : " + person);
+                if (person.getId().equals("196")) {
+                    guojing = person;
+                }
+            }
+            Person first = peoples.get(0);
+            if (!first.getId().equals("196")) {
+                normalTouPiaoNum(Integer.valueOf(first.getTongjil()) - Integer.valueOf(guojing.getTongjil()));
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
+    public void normalTouPiaoNum(int def)  {
+        if (def > 500) {
+            int i = (def - 500) / 25;
+            try {
+                normalTouPiao(i);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        } else {
+            System.out.println("小于500票");
+        }
+    }
 
-    @Test
-    public void normalTouPiao() {
-        final OkHttpClient okHttpClient = new OkHttpClient();
+
+    public static int count = 0;
+
+
+    public void normalTouPiao(final int kee) throws InterruptedException {
+        okHttpClient.dispatcher().setMaxRequestsPerHost(10);
         final FormBody.Builder builder = new FormBody.Builder();
-        builder.add("uid", "145");
+//        builder.add("uid", "145");
+        builder.add("uid", "196");
+        long starttime = new Date().getTime();
         for (int k = 0; k < 5; k++) {
             new Thread() {
                 @Override
                 public void run() {
-                    for (int j = 0; j < 10; j++) {
+                    for (int j = 0; j < kee; j++) {
                         String ip;
                         final Request request = new Request.Builder().url(" http://www.1jiyi.com/addtongji.php")
                                 .addHeader("User-Agent", IPUtil.getWeixinClient())
@@ -156,39 +182,54 @@ public class VoteTest extends BaseTest {
                                 public void onResponse(Call call, Response response) throws IOException {
                                     String string = response.body().string();
                                     System.out.println(string);
+                                    count++;
                                 }
                             });
-//                new Thread() {
-//                    @Override
-//                    public void run() {
-//                        try {
-//                            Call call = okHttpClient.newCall(request);
-//                            Response execute = call.execute();
-//                            String string = execute.body().string();
-//                            System.out.println(string);
-//                        } catch (IOException e) {
-//                            e.printStackTrace();
-//                        }
-//                    }
-//                }.start();
+//                            try {
+//                                Thread.sleep(1000);
+//                            } catch (InterruptedException e) {
+//                                e.printStackTrace();
+//                            }
                         }
-//                        try {
-//                            Thread.sleep(new Random().nextInt(500));
-//                        } catch (InterruptedException e) {
-//                            e.printStackTrace();
-//                        }
                     }
                 }
             }.start();
-
         }
         while (true) {
-            try {
-                System.out.println("正在执行的数量 = " + okHttpClient.dispatcher().runningCallsCount());
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
+            Thread.sleep(100);
+            System.out.println("共投票 = " + count + " 正在执行的数量 = " + okHttpClient.dispatcher().runningCallsCount());
+
+            if (okHttpClient.dispatcher().runningCallsCount() == 0) {
+                long costtime = 0;
+                System.out.println("共投票 = " + count + "  共耗时 = " + (costtime = new Date().getTime() - starttime) + "\n"
+                        + "每票耗时 = " + costtime / count
+                );
+                getList();
+                break;
             }
+        }
+    }
+
+
+    @Test
+    public void test() throws IOException, InterruptedException {
+        String ip;
+        FormBody.Builder builder = new FormBody.Builder();
+        builder.add("uid", "196");
+        for (int i = 0; i < 500; i++) {
+            for (int j = 0; j < 5; j++) {
+                Request request = new Request.Builder().url(" http://www.1jiyi.com/addtongji.php")
+                        .addHeader("User-Agent", IPUtil.getWeixinClient())
+                        .addHeader("X-Forwarded-For", ip = IPUtil.getHanDanRandomIp())
+                        .post(builder.build()).
+                                build();
+                String result = okHttpClient.newCall(request).execute().body().string();
+                System.out.println(result);
+                if (result.equals("您今天已经投过5次票了")) {
+                    break;
+                }
+            }
+            Thread.sleep(1000 * 10);
         }
     }
 
