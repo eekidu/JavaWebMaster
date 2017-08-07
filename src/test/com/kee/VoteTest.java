@@ -130,7 +130,7 @@ public class VoteTest extends BaseTest {
             }
             Person first = peoples.get(0);
             if (!first.getId().equals("196")) {
-                normalTouPiaoNum(Integer.valueOf(first.getTongjil()) - Integer.valueOf(guojing.getTongjil()));
+//                normalTouPiaoNum(Integer.valueOf(first.getTongjil()) - Integer.valueOf(guojing.getTongjil()));
             }
         } catch (IOException e) {
             e.printStackTrace();
