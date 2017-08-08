@@ -96,6 +96,18 @@ public class VoteTest extends BaseTest {
     }
 
     @Test
+    public void startSee(){
+        while (true){
+            getList();
+            try {
+                Thread.sleep(1000*60);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    @Test
     public void getList() {
         FormBody formBody = new FormBody.Builder()
                 .add("pagesize", "311")
@@ -128,30 +140,35 @@ public class VoteTest extends BaseTest {
                     guojing = person;
                 }
             }
-            Person first = peoples.get(0);
-            if (!first.getId().equals("196")) {
+//            Person first = peoples.get(1);
+//            if (!first.getId().equals("196")) {
 //                normalTouPiaoNum(Integer.valueOf(first.getTongjil()) - Integer.valueOf(guojing.getTongjil()));
-            }
+//            }
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
     public void normalTouPiaoNum(int def)  {
-        if (def > 500) {
-            int i = (def - 500) / 25;
-            try {
-                normalTouPiao(i);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        } else {
-            System.out.println("小于500票");
+        int i = (def / 25) + 1;
+        try {
+            normalTouPiao(i);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
     }
 
 
     public static int count = 0;
+
+    @Test
+    public void toupiao(){
+        try {
+            normalTouPiao(100);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
 
 
     public void normalTouPiao(final int kee) throws InterruptedException {
@@ -164,11 +181,11 @@ public class VoteTest extends BaseTest {
             new Thread() {
                 @Override
                 public void run() {
-                    for (int j = 0; j < kee; j++) {
+                    for (int j = 0; j < 4*kee; j++) {
                         String ip;
                         final Request request = new Request.Builder().url(" http://www.1jiyi.com/addtongji.php")
                                 .addHeader("User-Agent", IPUtil.getWeixinClient())
-                                .addHeader("X-Forwarded-For", ip = IPUtil.getHanDanRandomIp())
+                                .addHeader("X-Forwarded-For", ip = IPUtil.getRandomIp())
                                 .post(builder.build()).
                                         build();
                         System.out.println(ip);
