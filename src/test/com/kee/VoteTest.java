@@ -164,7 +164,7 @@ public class VoteTest extends BaseTest {
     @Test
     public void toupiao(){
         try {
-            normalTouPiao(100);
+            normalTouPiao(1);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -172,16 +172,16 @@ public class VoteTest extends BaseTest {
 
 
     public void normalTouPiao(final int kee) throws InterruptedException {
-        okHttpClient.dispatcher().setMaxRequestsPerHost(10);
+        okHttpClient.dispatcher().setMaxRequestsPerHost(20);
         final FormBody.Builder builder = new FormBody.Builder();
 //        builder.add("uid", "145");
         builder.add("uid", "196");
         long starttime = new Date().getTime();
-        for (int k = 0; k < 5; k++) {
+        for (int k = 0; k < 10; k++) {
             new Thread() {
                 @Override
                 public void run() {
-                    for (int j = 0; j < 4*kee; j++) {
+                    for (int j = 0; j < 2*kee; j++) {
                         String ip;
                         final Request request = new Request.Builder().url(" http://www.1jiyi.com/addtongji.php")
                                 .addHeader("User-Agent", IPUtil.getWeixinClient())
@@ -213,7 +213,7 @@ public class VoteTest extends BaseTest {
             }.start();
         }
         while (true) {
-            Thread.sleep(100);
+            Thread.sleep(1000);
             System.out.println("共投票 = " + count + " 正在执行的数量 = " + okHttpClient.dispatcher().runningCallsCount());
 
             if (okHttpClient.dispatcher().runningCallsCount() == 0) {
