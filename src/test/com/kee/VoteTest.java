@@ -19,9 +19,9 @@ public class VoteTest extends BaseTest {
 
     @Test
     public void test1223() throws IOException, InterruptedException {
-        for (int i = 0; i < 40
+        for (int i = 0; i < 600
                 ; i++) {
-            int mid = 42000+new Random().nextInt(1000);
+            int mid = 30000+new Random().nextInt(15000);
             FormBody formBody = new FormBody.Builder()
                     .add("vid", "70")
                     .add("vpid", "2388")
@@ -33,7 +33,7 @@ public class VoteTest extends BaseTest {
                     .post(formBody)
                     .addHeader("User-Agent", IPUtil.getWeixinClient())
                     .addHeader("X-Forwarded-For", IPUtil.getHanDanRandomIp())
-                    .addHeader("Cookie", "openId_12=on8N0w9z7KAOysB9rhp7_Q3R7tU0;oauth_12=9BAE1D3EEC493216829701FE75E9EF7D;mid_12=" + mid + "; fid_12=" + mid + "; wxcid_12=021EFL4A0r8Lrh1XNH6A04BT4A0EFL4D;wxcid_12_20171224=12;")
+                    .addHeader("Cookie", "openId_12=on8N0w9z7KAOysB9rhp7_Q3R7tU0;oauth_12=9BAE1D3EEC493216829701FE75E9EF7D;mid_12=" + mid + "; fid_12=" + mid + "; wxcid_12=021EFL4A0r8Lrh1XNH6A04BT4A0EFL4D;wxcid_12_20171227=12;")
 //                .addHeader("Cookie","oauth_12=75A8170C813A3819E579FE8D360D2771; openId_12=on8N0w-hIcZStZcVXUKqQ3uL5dO8; mid_12=407453; fid_12=407453; wxcid_12=061pGYDZ1WQ2h01afgEZ1tTkEZ1pGYDi; wxcid_12_20171224=12;")
                     .build();
 
