@@ -37,13 +37,11 @@ public class BaseTest {
     @Test
     public void test() throws AWTException, IOException, InterruptedException {
 
-
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         Rectangle screenRectangle = new Rectangle(screenSize);
         Robot robot = new Robot();
         BufferedImage image = robot.createScreenCapture(screenRectangle);
         ImageIO.write(image, "png", new File("D:\\pasht"));
-
 
     }
 
