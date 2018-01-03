@@ -69,6 +69,14 @@
       <version>1.2.3</version>
     </dependency>
 
+
+    <!-- https://mvnrepository.com/artifact/com.alibaba/druid -->
+    <dependency>
+      <groupId>com.alibaba</groupId>
+      <artifactId>druid</artifactId>
+      <version>1.1.6</version>
+    </dependency>
+
     <!--分页相关-->
     <dependency>
       <groupId>com.github.pagehelper</groupId>
@@ -248,6 +256,7 @@
       <artifactId>jsoup</artifactId>
       <version>1.10.3</version>
     </dependency>
+
 
   </dependencies>
   <build>

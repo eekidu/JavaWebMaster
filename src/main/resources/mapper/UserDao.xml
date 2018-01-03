@@ -2,7 +2,11 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.kee.dao.user">
+<mapper namespace="com.kee.dao.UserDao">
 
+
+    <insert id="inserUser">
+        INSERT INTO t_user (name) VALUES (#{name});
+    </insert>
 </mapper>
 
