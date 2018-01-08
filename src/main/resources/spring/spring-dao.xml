@@ -11,8 +11,6 @@
     <context:property-placeholder location="classpath:jdbc.properties"/>
 
 
-
-
     <!-- 2.数据库连接池 c3p0-->
   <!--<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">-->
         <!--&lt;!&ndash; 配置连接池属性 &ndash;&gt;-->

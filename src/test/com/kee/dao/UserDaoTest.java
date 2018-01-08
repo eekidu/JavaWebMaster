@@ -18,8 +18,8 @@ public class UserDaoTest extends BaseTest{
     @Test
     public void inserUser() throws Exception {
 
+        User user = new User();
         for (int i = 0; i < 5 * 10000; i++) {
-            User user = new User();
             user.setName("haikuan"+i);
             int j = userDao.inserUser(user);
             System.out.println(i+"");
