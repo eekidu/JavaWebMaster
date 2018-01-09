@@ -6,6 +6,7 @@ import com.kee.entity.User;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.transaction.annotation.Transactional;
 
 import static org.junit.Assert.*;
 
@@ -15,17 +16,15 @@ import static org.junit.Assert.*;
 public class UserDaoTest extends BaseTest{
     @Autowired
     UserDao userDao;
+
+    @Transactional
     @Test
     public void inserUser() throws Exception {
-
-
-
         long l = System.currentTimeMillis();
-
         for (int i = 0; i < 5 * 10000; i++) {
             User user = new User();
             user.setName("haikuan"+i);
-//            int j = userDao.inserUser(user);
+            int j = userDao.inserUser(user);
             System.out.println(i+"");
         }
         long end = System.currentTimeMillis();

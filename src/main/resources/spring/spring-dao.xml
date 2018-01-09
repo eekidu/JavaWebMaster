@@ -42,6 +42,10 @@
         <property name="initialSize" value="1" />
         <property name="minIdle" value="10" />
         <property name="maxActive" value="30" />
+
+        <!--https://github.com/alibaba/druid/wiki/配置_StatFilter-->
+        <property name="filters" value="mergeStat" />
+        <property name="connectionProperties" value="druid.stat.slowSqlMillis=5000" /><!--慢SQL记录-->
     </bean>
 
 
@@ -63,6 +67,8 @@
         <aop:advisor advice-ref="druid-stat-interceptor"
                      pointcut-ref="druid-stat-pointcut" />
     </aop:config>
+
+
 
 
     <!-- 3.配置SqlSessionFactory对象 -->
