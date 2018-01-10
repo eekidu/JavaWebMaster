@@ -49,4 +49,5 @@ public class UserDaoTest extends BaseTest{
 
         Thread.sleep(300*1000);
     }
+
 }
