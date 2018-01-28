@@ -1,11 +1,14 @@
 package com.kee.entity;
 
-/**
- * Created by kee on 2017/7/31.
- */
+
 public class User {
+
     private Long id;
+    /**
+     * name
+     */
     private String name;
+
 
     public Long getId() {
         return id;
@@ -16,6 +19,7 @@ public class User {
     }
 
     public String getName() {
+
         return name;
     }
 

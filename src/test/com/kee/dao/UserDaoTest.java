@@ -8,7 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.transaction.annotation.Transactional;
 
-import static org.junit.Assert.*;
+import java.awt.*;
+import java.io.IOException;
+
+
 
 /**
  * Created by wosyo on 2018/1/3.
@@ -46,7 +49,10 @@ public class UserDaoTest extends BaseTest{
                 }
             }).start();
         }
+        Thread.sleep(10000);
+    }
 
-        Thread.sleep(300*1000);
+    public void test() throws AWTException, IOException, InterruptedException {
+        super.test();
     }
 }
