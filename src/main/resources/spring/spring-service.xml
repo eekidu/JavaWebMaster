@@ -9,9 +9,8 @@
 	http://www.springframework.org/schema/context/spring-context.xsd
 	http://www.springframework.org/schema/tx
 	http://www.springframework.org/schema/tx/spring-tx.xsd">
-    <!-- 扫描service包下所有使用注解的类型 --><!--TODO 修改-->
+    <!-- 扫描service包下所有使用注解的类型 --><!--TODO 修改Service包-->
     <context:component-scan base-package="com.kee.service"/>
-    <!--<context:component-scan base-package="com.kee.project.meizi"/>-->
 
     <!-- 配置事务管理器 -->
     <bean id="transactionManager"

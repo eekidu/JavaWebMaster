@@ -55,4 +55,5 @@ public class UserDaoTest extends BaseTest{
     public void test() throws AWTException, IOException, InterruptedException {
         super.test();
     }
+
 }
