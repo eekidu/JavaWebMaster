@@ -3,13 +3,475 @@
   <ID>MAVEN</ID>
   <OriginalElement>com.kee:JavaWebMaster:1.0-SNAPSHOT</OriginalElement>
   <nodes>
-    <node x="0.0" y="0.0">com.kee:JavaWebMaster:1.0-SNAPSHOT</node>
+    <node x="0.0" y="910.2427560646895">com.kee:JavaWebMaster:1.0-SNAPSHOT</node>
+    <node x="255.5" y="0.0">junit:junit:jar:4.12</node>
+    <node x="458.5" y="0.0">junit:junit:jar:4.12/org.hamcrest:hamcrest-core:jar:1.3</node>
+    <node x="477.5" y="1528.5">org.slf4j:slf4j-api:jar:1.7.21</node>
+    <node x="461.5" y="1458.5">ch.qos.logback:logback-core:jar:1.1.8</node>
+    <node x="223.0" y="1493.5">ch.qos.logback:logback-classic:jar:1.1.8</node>
+    <node x="205.0" y="1233.0">mysql:mysql-connector-java:jar:5.1.35</node>
+    <node x="245.0" y="1722.0578922925615">org.mybatis:mybatis:jar:3.3.0</node>
+    <node x="224.0" y="1354.0">org.mybatis:mybatis-spring:jar:1.2.3</node>
+    <node x="252.0" y="1424.0">com.alibaba:druid:jar:1.1.6</node>
+    <node x="234.0" y="1792.0578922925615">com.github.pagehelper:pagehelper:jar:5.0.0</node>
+    <node x="471.5" y="1792.0578922925615">com.github.pagehelper:pagehelper:jar:5.0.0/com.github.jsqlparser:jsqlparser:jar:0.9.5</node>
+    <node x="241.5" y="927.5">taglibs:standard:jar:1.1.2</node>
+    <node x="259.5" y="389.5">jstl:jstl:jar:1.2</node>
+    <node x="209.0" y="1067.5">com.fasterxml.jackson.core:jackson-annotations:jar:2.8.8</node>
+    <node x="463.0" y="1100.5">com.fasterxml.jackson.core:jackson-core:jar:2.8.8</node>
+    <node x="217.0" y="1163.0">com.fasterxml.jackson.core:jackson-databind:jar:2.8.8</node>
+    <node x="442.0" y="1170.5">com.fasterxml.jackson.core:jackson-databind:jar:2.8.8/com.fasterxml.jackson.core:jackson-annotations:jar:2.8.0</node>
+    <node x="221.0" y="650.5">javax.servlet:javax.servlet-api:jar:3.1.0</node>
+    <node x="1273.0" y="1220.017857142857">org.springframework:spring-core:jar:4.2.7.RELEASE</node>
+    <node x="1453.0" y="1220.017857142857">org.springframework:spring-core:jar:4.2.7.RELEASE/commons-logging:commons-logging:jar:1.2</node>
+    <node x="1084.0" y="1108.809863772128">org.springframework:spring-beans:jar:4.2.7.RELEASE</node>
+    <node x="671.0" y="1622.8677560646897">org.springframework:spring-context:jar:4.2.7.RELEASE</node>
+    <node x="867.0" y="1686.9927560646897">org.springframework:spring-context:jar:4.2.7.RELEASE/org.springframework:spring-expression:jar:4.2.7.RELEASE</node>
+    <node x="887.0" y="1512.3752777373054">org.springframework:spring-aop:jar:4.2.7.RELEASE</node>
+    <node x="1089.5" y="1530.1252777373054">org.springframework:spring-aop:jar:4.2.7.RELEASE/aopalliance:aopalliance:jar:1.0</node>
+    <node x="226.5" y="529.5">org.aspectj:aspectjweaver:jar:1.8.13</node>
+    <node x="679.5" y="781.0">org.springframework:spring-jdbc:jar:4.2.7.RELEASE</node>
+    <node x="893.5" y="562.5">org.springframework:spring-tx:jar:4.2.7.RELEASE</node>
+    <node x="467.5" y="1579.5">org.springframework:spring-web:jar:4.2.7.RELEASE</node>
+    <node x="223.0" y="1652.0578922925615">org.springframework:spring-webmvc:jar:4.2.7.RELEASE</node>
+    <node x="1091.0" y="338.5">org.springframework:spring-test:jar:4.2.7.RELEASE</node>
+    <node x="231.0" y="235.5">commons-io:commons-io:jar:1.3.1</node>
+    <node x="207.5" y="580.5">commons-fileupload:commons-fileupload:jar:1.3.1</node>
+    <node x="464.0" y="580.5">commons-fileupload:commons-fileupload:jar:1.3.1/commons-io:commons-io:jar:2.2</node>
+    <node x="244.5" y="720.5">com.thoughtworks.xstream:xstream:jar:1.4.8</node>
+    <node x="480.0" y="685.5">com.thoughtworks.xstream:xstream:jar:1.4.8/xmlpull:xmlpull:jar:1.1.3.1</node>
+    <node x="473.0" y="755.5">com.thoughtworks.xstream:xstream:jar:1.4.8/xpp3:xpp3_min:jar:1.1.4c</node>
+    <node x="248.5" y="997.5">com.squareup.okhttp3:okhttp:jar:3.4.1</node>
+    <node x="487.5" y="997.5">com.squareup.okhttp3:okhttp:jar:3.4.1/com.squareup.okio:okio:jar:1.9.0</node>
+    <node x="253.0" y="876.5">com.google.code.gson:gson:jar:2.8.2</node>
+    <node x="249.0" y="1303.0">dom4j:dom4j:jar:1.6.1</node>
+    <node x="476.0" y="1303.0">dom4j:dom4j:jar:1.6.1/xml-apis:xml-apis:jar:1.0.b2</node>
+    <node x="250.5" y="165.5">io.reactivex.rxjava2:rxjava:jar:2.1.0</node>
+    <node x="452.5" y="165.5">io.reactivex.rxjava2:rxjava:jar:2.1.0/org.reactivestreams:reactive-streams:jar:1.0.0</node>
+    <node x="480.5" y="95.5">com.squareup.retrofit2:retrofit:jar:2.3.0</node>
+    <node x="694.0" y="95.5">com.squareup.retrofit2:retrofit:jar:2.3.0/com.squareup.okhttp3:okhttp:jar:3.8.0</node>
+    <node x="217.5" y="70.0">com.squareup.retrofit2:converter-scalars:jar:2.3.0</node>
+    <node x="223.0" y="305.5">com.squareup.retrofit2:converter-gson:jar:2.3.0</node>
+    <node x="486.0" y="313.0">com.squareup.retrofit2:converter-gson:jar:2.3.0/com.google.code.gson:gson:jar:2.7</node>
+    <node x="210.5" y="459.5">com.squareup.okhttp3:logging-interceptor:jar:3.8.1</node>
+    <node x="481.5" y="459.5">com.squareup.okhttp3:logging-interceptor:jar:3.8.1/com.squareup.okhttp3:okhttp:jar:3.8.1</node>
+    <node x="251.5" y="806.5">org.jsoup:jsoup:jar:1.10.3</node>
   </nodes>
   <notes />
-  <edges />
-  <settings layout="Hierarchic Group" zoom="1.1570265870862724" x="412.32779019819634" y="87.9470760926904" />
-  <SelectedNodes />
+  <edges>
+    <edge source="com.kee:JavaWebMaster:1.0-SNAPSHOT" target="com.google.code.gson:gson:jar:2.8.2">
+      <point x="62.5" y="-0.8108108108108354" />
+      <point x="205.0" y="891.5" />
+      <point x="-30.5" y="-0.0" />
+    </edge>
+    <edge source="com.kee:JavaWebMaster:1.0-SNAPSHOT" target="org.springframework:spring-core:jar:4.2.7.RELEASE">
+      <point x="62.5" y="-8.918918918918962" />
+      <point x="205.0" y="379.0" />
+      <point x="1193.0" y="379.0" />
+      <point x="-50.0" y="-10.5" />
+    </edge>
+    <edge source="org.springframework:spring-aop:jar:4.2.7.RELEASE" target="org.springframework:spring-beans:jar:4.2.7.RELEASE">
+      <point x="48.5" y="-10.0" />
+      <point x="1004.0" y="1517.3752777373054" />
+      <point x="-54.5" y="8.571428571428669" />
+    </edge>
+    <edge source="com.kee:JavaWebMaster:1.0-SNAPSHOT" target="jstl:jstl:jar:1.2">
+      <point x="62.5" y="-8.108108108108127" />
+      <point x="205.0" y="404.5" />
+      <point x="-24.0" y="-0.0" />
+    </edge>
+    <edge source="com.kee:JavaWebMaster:1.0-SNAPSHOT" target="org.springframework:spring-webmvc:jar:4.2.7.RELEASE">
+      <point x="62.5" y="12.972972972972912" />
+      <point x="205.0" y="1667.0578922925615" />
+      <point x="-60.5" y="-0.0" />
+    </edge>
+    <edge source="org.springframework:spring-aop:jar:4.2.7.RELEASE" target="org.springframework:spring-aop:jar:4.2.7.RELEASE/aopalliance:aopalliance:jar:1.0">
+      <point x="48.5" y="10.0" />
+      <point x="1004.0" y="1537.3752777373054" />
+      <point x="-49.0" y="-0.0" />
+    </edge>
+    <edge source="com.kee:JavaWebMaster:1.0-SNAPSHOT" target="com.squareup.retrofit2:converter-gson:jar:2.3.0">
+      <point x="62.5" y="-10.540540540540519" />
+      <point x="205.0" y="320.5" />
+      <point x="-60.5" y="-0.0" />
+    </edge>
+    <edge source="com.kee:JavaWebMaster:1.0-SNAPSHOT" target="org.mybatis:mybatis-spring:jar:1.2.3">
+      <point x="62.5" y="7.297297297297291" />
+      <point x="205.0" y="1369.0" />
+      <point x="-59.5" y="-0.0" />
+    </edge>
+    <edge source="com.squareup.retrofit2:converter-gson:jar:2.3.0" target="com.squareup.retrofit2:converter-gson:jar:2.3.0/com.google.code.gson:gson:jar:2.7">
+      <point x="60.5" y="7.5" />
+      <point x="-30.5" y="-0.0" />
+    </edge>
+    <edge source="junit:junit:jar:4.12" target="junit:junit:jar:4.12/org.hamcrest:hamcrest-core:jar:1.3">
+      <point x="28.0" y="-0.0" />
+      <point x="-58.0" y="-0.0" />
+    </edge>
+    <edge source="org.springframework:spring-context:jar:4.2.7.RELEASE/org.springframework:spring-expression:jar:4.2.7.RELEASE" target="org.springframework:spring-core:jar:4.2.7.RELEASE">
+      <point x="68.5" y="-0.0" />
+      <point x="1193.0" y="1701.9927560646897" />
+      <point x="-50.0" y="10.5" />
+    </edge>
+    <edge source="com.kee:JavaWebMaster:1.0-SNAPSHOT" target="com.squareup.okhttp3:okhttp:jar:3.4.1">
+      <point x="62.5" y="1.6216216216216708" />
+      <point x="205.0" y="1012.5" />
+      <point x="-35.0" y="-0.0" />
+    </edge>
+    <edge source="com.kee:JavaWebMaster:1.0-SNAPSHOT" target="org.springframework:spring-tx:jar:4.2.7.RELEASE">
+      <point x="62.5" y="-5.67567567567562" />
+      <point x="205.0" y="570.0" />
+      <point x="-42.0" y="-7.5" />
+    </edge>
+    <edge source="com.kee:JavaWebMaster:1.0-SNAPSHOT" target="org.springframework:spring-context:jar:4.2.7.RELEASE">
+      <point x="62.5" y="12.16216216216219" />
+      <point x="205.0" y="1632.9328922925615" />
+      <point x="591.0" y="1632.9328922925615" />
+      <point x="-58.0" y="-0.0" />
+    </edge>
+    <edge source="com.fasterxml.jackson.core:jackson-databind:jar:2.8.8" target="com.fasterxml.jackson.core:jackson-databind:jar:2.8.8/com.fasterxml.jackson.core:jackson-annotations:jar:2.8.0">
+      <point x="66.5" y="7.5" />
+      <point x="-74.5" y="-0.0" />
+    </edge>
+    <edge source="com.kee:JavaWebMaster:1.0-SNAPSHOT" target="org.mybatis:mybatis:jar:3.3.0">
+      <point x="62.5" y="13.783783783783747" />
+      <point x="205.0" y="1737.0578922925615" />
+      <point x="-38.5" y="-0.0" />
+    </edge>
+    <edge source="com.kee:JavaWebMaster:1.0-SNAPSHOT" target="org.springframework:spring-beans:jar:4.2.7.RELEASE">
+      <point x="62.5" y="-0.0" />
+      <point x="205.0" y="917.0" />
+      <point x="1004.0" y="917.0" />
+      <point x="-54.5" y="-4.285714285714221" />
+    </edge>
+    <edge source="org.springframework:spring-webmvc:jar:4.2.7.RELEASE" target="org.springframework:spring-beans:jar:4.2.7.RELEASE">
+      <point x="60.5" y="-12.0" />
+      <point x="362.0" y="1655.0578922925615" />
+      <point x="442.0" y="1569.0" />
+      <point x="591.0" y="1569.0" />
+      <point x="671.0" y="1132.9927560646895" />
+      <point x="1004.0" y="1132.9927560646895" />
+      <point x="-54.5" y="-0.0" />
+    </edge>
+    <edge source="com.kee:JavaWebMaster:1.0-SNAPSHOT" target="org.springframework:spring-web:jar:4.2.7.RELEASE">
+      <point x="62.5" y="11.351351351351354" />
+      <point x="205.0" y="1587.0" />
+      <point x="-49.0" y="-7.5" />
+    </edge>
+    <edge source="dom4j:dom4j:jar:1.6.1" target="dom4j:dom4j:jar:1.6.1/xml-apis:xml-apis:jar:1.0.b2">
+      <point x="34.5" y="-0.0" />
+      <point x="-40.5" y="-0.0" />
+    </edge>
+    <edge source="com.fasterxml.jackson.core:jackson-databind:jar:2.8.8" target="com.fasterxml.jackson.core:jackson-core:jar:2.8.8">
+      <point x="66.5" y="-7.5" />
+      <point x="442.0" y="1123.0" />
+      <point x="-53.5" y="7.5" />
+    </edge>
+    <edge source="ch.qos.logback:logback-classic:jar:1.1.8" target="ch.qos.logback:logback-core:jar:1.1.8">
+      <point x="60.5" y="-7.5" />
+      <point x="362.0" y="1501.0" />
+      <point x="442.0" y="1481.0" />
+      <point x="-55.0" y="7.5" />
+    </edge>
+    <edge source="com.thoughtworks.xstream:xstream:jar:1.4.8" target="com.thoughtworks.xstream:xstream:jar:1.4.8/xmlpull:xmlpull:jar:1.1.3.1">
+      <point x="39.0" y="-7.5" />
+      <point x="362.0" y="728.0" />
+      <point x="442.0" y="700.5" />
+      <point x="-36.5" y="-0.0" />
+    </edge>
+    <edge source="org.springframework:spring-tx:jar:4.2.7.RELEASE" target="org.springframework:spring-core:jar:4.2.7.RELEASE">
+      <point x="42.0" y="-7.5" />
+      <point x="1193.0" y="570.0" />
+      <point x="-50.0" y="-7.5" />
+    </edge>
+    <edge source="com.github.pagehelper:pagehelper:jar:5.0.0" target="com.github.pagehelper:pagehelper:jar:5.0.0/com.github.jsqlparser:jsqlparser:jar:0.9.5">
+      <point x="49.5" y="-0.0" />
+      <point x="-45.0" y="-0.0" />
+    </edge>
+    <edge source="com.squareup.retrofit2:converter-scalars:jar:2.3.0" target="com.squareup.retrofit2:retrofit:jar:2.3.0">
+      <point x="66.0" y="-0.0" />
+      <point x="362.0" y="85.0" />
+      <point x="442.0" y="100.5" />
+      <point x="-36.0" y="-10.0" />
+    </edge>
+    <edge source="com.kee:JavaWebMaster:1.0-SNAPSHOT" target="com.squareup.retrofit2:converter-scalars:jar:2.3.0">
+      <point x="62.5" y="-13.783783783783747" />
+      <point x="205.0" y="85.0" />
+      <point x="-66.0" y="-0.0" />
+    </edge>
+    <edge source="org.springframework:spring-context:jar:4.2.7.RELEASE" target="org.springframework:spring-beans:jar:4.2.7.RELEASE">
+      <point x="58.0" y="-3.75" />
+      <point x="1004.0" y="1634.1177560646897" />
+      <point x="-54.5" y="12.85714285714289" />
+    </edge>
+    <edge source="com.kee:JavaWebMaster:1.0-SNAPSHOT" target="org.springframework:spring-aop:jar:4.2.7.RELEASE">
+      <point x="62.5" y="6.486486486486456" />
+      <point x="205.0" y="1343.5" />
+      <point x="787.0" y="1343.5" />
+      <point x="867.0" y="1517.3752777373054" />
+      <point x="-48.5" y="-10.0" />
+    </edge>
+    <edge source="org.springframework:spring-jdbc:jar:4.2.7.RELEASE" target="org.springframework:spring-tx:jar:4.2.7.RELEASE">
+      <point x="49.5" y="-10.0" />
+      <point x="867.0" y="585.0" />
+      <point x="-42.0" y="7.5" />
+    </edge>
+    <edge source="org.springframework:spring-jdbc:jar:4.2.7.RELEASE" target="org.springframework:spring-beans:jar:4.2.7.RELEASE">
+      <point x="49.5" y="10.0" />
+      <point x="867.0" y="846.8317640416699" />
+      <point x="1004.0" y="846.8317640416699" />
+      <point x="-54.5" y="-8.571428571428669" />
+    </edge>
+    <edge source="com.kee:JavaWebMaster:1.0-SNAPSHOT" target="org.slf4j:slf4j-api:jar:1.7.21">
+      <point x="62.5" y="10.540540540540519" />
+      <point x="205.0" y="1552.5" />
+      <point x="-39.0" y="7.5" />
+    </edge>
+    <edge source="com.kee:JavaWebMaster:1.0-SNAPSHOT" target="taglibs:standard:jar:1.1.2">
+      <point x="62.5" y="0.8108108108108354" />
+      <point x="205.0" y="942.5" />
+      <point x="-42.0" y="-0.0" />
+    </edge>
+    <edge source="com.kee:JavaWebMaster:1.0-SNAPSHOT" target="commons-io:commons-io:jar:1.3.1">
+      <point x="62.5" y="-11.351351351351354" />
+      <point x="205.0" y="250.5" />
+      <point x="-52.5" y="-0.0" />
+    </edge>
+    <edge source="ch.qos.logback:logback-classic:jar:1.1.8" target="org.slf4j:slf4j-api:jar:1.7.21">
+      <point x="60.5" y="7.5" />
+      <point x="362.0" y="1516.0" />
+      <point x="442.0" y="1536.0" />
+      <point x="-39.0" y="-7.5" />
+    </edge>
+    <edge source="org.springframework:spring-context:jar:4.2.7.RELEASE" target="org.springframework:spring-context:jar:4.2.7.RELEASE/org.springframework:spring-expression:jar:4.2.7.RELEASE">
+      <point x="58.0" y="11.25" />
+      <point x="-68.5" y="-7.5" />
+    </edge>
+    <edge source="com.squareup.retrofit2:retrofit:jar:2.3.0" target="com.squareup.retrofit2:retrofit:jar:2.3.0/com.squareup.okhttp3:okhttp:jar:3.8.0">
+      <point x="36.0" y="-0.0" />
+      <point x="-35.0" y="-0.0" />
+    </edge>
+    <edge source="org.springframework:spring-aop:jar:4.2.7.RELEASE" target="org.springframework:spring-core:jar:4.2.7.RELEASE">
+      <point x="48.5" y="-0.0" />
+      <point x="1004.0" y="1527.3752777373054" />
+      <point x="1084.0" y="1519.6252777373054" />
+      <point x="1193.0" y="1519.6252777373054" />
+      <point x="-50.0" y="1.5" />
+    </edge>
+    <edge source="com.kee:JavaWebMaster:1.0-SNAPSHOT" target="javax.servlet:javax.servlet-api:jar:3.1.0">
+      <point x="62.5" y="-4.054054054054063" />
+      <point x="205.0" y="665.5" />
+      <point x="-62.5" y="-0.0" />
+    </edge>
+    <edge source="org.springframework:spring-beans:jar:4.2.7.RELEASE" target="org.springframework:spring-core:jar:4.2.7.RELEASE">
+      <point x="54.5" y="-0.0" />
+      <point x="-50.0" y="-1.5" />
+    </edge>
+    <edge source="org.springframework:spring-context:jar:4.2.7.RELEASE" target="org.springframework:spring-aop:jar:4.2.7.RELEASE">
+      <point x="58.0" y="-11.25" />
+      <point x="867.0" y="1537.3752777373054" />
+      <point x="-48.5" y="10.0" />
+    </edge>
+    <edge source="com.kee:JavaWebMaster:1.0-SNAPSHOT" target="com.fasterxml.jackson.core:jackson-databind:jar:2.8.8">
+      <point x="62.5" y="4.054054054054063" />
+      <point x="-66.5" y="-0.0" />
+    </edge>
+    <edge source="com.kee:JavaWebMaster:1.0-SNAPSHOT" target="junit:junit:jar:4.12">
+      <point x="62.5" y="-14.594594594594582" />
+      <point x="205.0" y="15.0" />
+      <point x="-28.0" y="-0.0" />
+    </edge>
+    <edge source="com.kee:JavaWebMaster:1.0-SNAPSHOT" target="commons-fileupload:commons-fileupload:jar:1.3.1">
+      <point x="62.5" y="-4.864864864864899" />
+      <point x="-76.0" y="-0.0" />
+    </edge>
+    <edge source="org.springframework:spring-web:jar:4.2.7.RELEASE" target="org.springframework:spring-beans:jar:4.2.7.RELEASE">
+      <point x="49.0" y="-11.25" />
+      <point x="591.0" y="1583.25" />
+      <point x="671.0" y="1137.2784703504037" />
+      <point x="1004.0" y="1137.2784703504037" />
+      <point x="-54.5" y="4.285714285714221" />
+    </edge>
+    <edge source="com.kee:JavaWebMaster:1.0-SNAPSHOT" target="com.squareup.retrofit2:retrofit:jar:2.3.0">
+      <point x="62.5" y="-12.972972972973025" />
+      <point x="205.0" y="110.5" />
+      <point x="-36.0" y="-0.0" />
+    </edge>
+    <edge source="com.kee:JavaWebMaster:1.0-SNAPSHOT" target="org.jsoup:jsoup:jar:1.10.3">
+      <point x="62.5" y="-1.6216216216216708" />
+      <point x="205.0" y="821.5" />
+      <point x="-32.0" y="-0.0" />
+    </edge>
+    <edge source="com.kee:JavaWebMaster:1.0-SNAPSHOT" target="com.thoughtworks.xstream:xstream:jar:1.4.8">
+      <point x="62.5" y="-3.243243243243228" />
+      <point x="205.0" y="735.5" />
+      <point x="-39.0" y="-0.0" />
+    </edge>
+    <edge source="org.springframework:spring-webmvc:jar:4.2.7.RELEASE" target="org.springframework:spring-context:jar:4.2.7.RELEASE/org.springframework:spring-expression:jar:4.2.7.RELEASE">
+      <point x="60.5" y="6.0" />
+      <point x="362.0" y="1673.0578922925615" />
+      <point x="442.0" y="1709.4927560646897" />
+      <point x="-68.5" y="7.5" />
+    </edge>
+    <edge source="org.springframework:spring-webmvc:jar:4.2.7.RELEASE" target="org.springframework:spring-web:jar:4.2.7.RELEASE">
+      <point x="60.5" y="-6.0" />
+      <point x="362.0" y="1661.0578922925615" />
+      <point x="442.0" y="1602.0" />
+      <point x="-49.0" y="7.5" />
+    </edge>
+    <edge source="com.kee:JavaWebMaster:1.0-SNAPSHOT" target="com.fasterxml.jackson.core:jackson-core:jar:2.8.8">
+      <point x="62.5" y="3.243243243243228" />
+      <point x="205.0" y="1108.0" />
+      <point x="-53.5" y="-7.5" />
+    </edge>
+    <edge source="org.springframework:spring-test:jar:4.2.7.RELEASE" target="org.springframework:spring-core:jar:4.2.7.RELEASE">
+      <point x="47.5" y="-0.0" />
+      <point x="-50.0" y="-13.5" />
+    </edge>
+    <edge source="org.springframework:spring-web:jar:4.2.7.RELEASE" target="org.springframework:spring-aop:jar:4.2.7.RELEASE">
+      <point x="49.0" y="-3.75" />
+      <point x="591.0" y="1590.75" />
+      <point x="671.0" y="1576.75" />
+      <point x="787.0" y="1576.75" />
+      <point x="867.0" y="1527.3752777373054" />
+      <point x="-48.5" y="-0.0" />
+    </edge>
+    <edge source="com.kee:JavaWebMaster:1.0-SNAPSHOT" target="com.fasterxml.jackson.core:jackson-annotations:jar:2.8.8">
+      <point x="62.5" y="2.4324324324323925" />
+      <point x="-74.5" y="-0.0" />
+    </edge>
+    <edge source="org.springframework:spring-webmvc:jar:4.2.7.RELEASE" target="org.springframework:spring-context:jar:4.2.7.RELEASE">
+      <point x="60.5" y="-0.0" />
+      <point x="362.0" y="1667.0578922925615" />
+      <point x="442.0" y="1661.0578922925615" />
+      <point x="591.0" y="1661.0578922925615" />
+      <point x="-58.0" y="10.0" />
+    </edge>
+    <edge source="commons-fileupload:commons-fileupload:jar:1.3.1" target="commons-fileupload:commons-fileupload:jar:1.3.1/commons-io:commons-io:jar:2.2">
+      <point x="76.0" y="-0.0" />
+      <point x="-52.5" y="-0.0" />
+    </edge>
+    <edge source="com.kee:JavaWebMaster:1.0-SNAPSHOT" target="org.aspectj:aspectjweaver:jar:1.8.13">
+      <point x="62.5" y="-6.486486486486456" />
+      <point x="205.0" y="544.5" />
+      <point x="-57.0" y="-0.0" />
+    </edge>
+    <edge source="com.kee:JavaWebMaster:1.0-SNAPSHOT" target="io.reactivex.rxjava2:rxjava:jar:2.1.0">
+      <point x="62.5" y="-12.16216216216219" />
+      <point x="205.0" y="180.5" />
+      <point x="-33.0" y="-0.0" />
+    </edge>
+    <edge source="com.kee:JavaWebMaster:1.0-SNAPSHOT" target="org.springframework:spring-test:jar:4.2.7.RELEASE">
+      <point x="62.5" y="-9.729729729729684" />
+      <point x="205.0" y="353.5" />
+      <point x="-47.5" y="-0.0" />
+    </edge>
+    <edge source="com.kee:JavaWebMaster:1.0-SNAPSHOT" target="com.github.pagehelper:pagehelper:jar:5.0.0">
+      <point x="62.5" y="14.594594594594582" />
+      <point x="205.0" y="1807.0578922925615" />
+      <point x="-49.5" y="-0.0" />
+    </edge>
+    <edge source="com.kee:JavaWebMaster:1.0-SNAPSHOT" target="mysql:mysql-connector-java:jar:5.1.35">
+      <point x="62.5" y="4.864864864864899" />
+      <point x="-78.5" y="-0.0" />
+    </edge>
+    <edge source="org.springframework:spring-webmvc:jar:4.2.7.RELEASE" target="org.springframework:spring-core:jar:4.2.7.RELEASE">
+      <point x="60.5" y="12.0" />
+      <point x="362.0" y="1679.0578922925615" />
+      <point x="442.0" y="1727.4927560646897" />
+      <point x="1193.0" y="1727.4927560646897" />
+      <point x="-50.0" y="13.5" />
+    </edge>
+    <edge source="com.thoughtworks.xstream:xstream:jar:1.4.8" target="com.thoughtworks.xstream:xstream:jar:1.4.8/xpp3:xpp3_min:jar:1.1.4c">
+      <point x="39.0" y="7.5" />
+      <point x="362.0" y="743.0" />
+      <point x="442.0" y="770.5" />
+      <point x="-43.5" y="-0.0" />
+    </edge>
+    <edge source="com.kee:JavaWebMaster:1.0-SNAPSHOT" target="ch.qos.logback:logback-core:jar:1.1.8">
+      <point x="62.5" y="8.918918918918962" />
+      <point x="205.0" y="1464.5" />
+      <point x="-55.0" y="-7.5" />
+    </edge>
+    <edge source="com.kee:JavaWebMaster:1.0-SNAPSHOT" target="org.springframework:spring-jdbc:jar:4.2.7.RELEASE">
+      <point x="62.5" y="-2.4324324324323925" />
+      <point x="205.0" y="796.0" />
+      <point x="-49.5" y="-0.0" />
+    </edge>
+    <edge source="org.springframework:spring-web:jar:4.2.7.RELEASE" target="org.springframework:spring-core:jar:4.2.7.RELEASE">
+      <point x="49.0" y="3.75" />
+      <point x="591.0" y="1598.25" />
+      <point x="671.0" y="1607.4328922925615" />
+      <point x="1193.0" y="1607.4328922925615" />
+      <point x="-50.0" y="4.5" />
+    </edge>
+    <edge source="org.springframework:spring-tx:jar:4.2.7.RELEASE" target="org.springframework:spring-beans:jar:4.2.7.RELEASE">
+      <point x="42.0" y="7.5" />
+      <point x="1004.0" y="585.0" />
+      <point x="-54.5" y="-12.85714285714289" />
+    </edge>
+    <edge source="io.reactivex.rxjava2:rxjava:jar:2.1.0" target="io.reactivex.rxjava2:rxjava:jar:2.1.0/org.reactivestreams:reactive-streams:jar:1.0.0">
+      <point x="33.0" y="-0.0" />
+      <point x="-64.0" y="-0.0" />
+    </edge>
+    <edge source="com.kee:JavaWebMaster:1.0-SNAPSHOT" target="dom4j:dom4j:jar:1.6.1">
+      <point x="62.5" y="5.67567567567562" />
+      <point x="205.0" y="1318.0" />
+      <point x="-34.5" y="-0.0" />
+    </edge>
+    <edge source="com.kee:JavaWebMaster:1.0-SNAPSHOT" target="com.alibaba:druid:jar:1.1.6">
+      <point x="62.5" y="8.108108108108127" />
+      <point x="205.0" y="1439.0" />
+      <point x="-31.5" y="-0.0" />
+    </edge>
+    <edge source="org.springframework:spring-web:jar:4.2.7.RELEASE" target="org.springframework:spring-context:jar:4.2.7.RELEASE">
+      <point x="49.0" y="11.25" />
+      <point x="591.0" y="1605.75" />
+      <point x="-58.0" y="-10.0" />
+    </edge>
+    <edge source="org.springframework:spring-jdbc:jar:4.2.7.RELEASE" target="org.springframework:spring-core:jar:4.2.7.RELEASE">
+      <point x="49.5" y="-0.0" />
+      <point x="1193.0" y="796.0" />
+      <point x="-50.0" y="-4.5" />
+    </edge>
+    <edge source="com.kee:JavaWebMaster:1.0-SNAPSHOT" target="com.squareup.okhttp3:logging-interceptor:jar:3.8.1">
+      <point x="62.5" y="-7.297297297297291" />
+      <point x="-73.0" y="-0.0" />
+    </edge>
+    <edge source="com.squareup.okhttp3:okhttp:jar:3.4.1" target="com.squareup.okhttp3:okhttp:jar:3.4.1/com.squareup.okio:okio:jar:1.9.0">
+      <point x="35.0" y="-0.0" />
+      <point x="-29.0" y="-0.0" />
+    </edge>
+    <edge source="com.squareup.okhttp3:logging-interceptor:jar:3.8.1" target="com.squareup.okhttp3:logging-interceptor:jar:3.8.1/com.squareup.okhttp3:okhttp:jar:3.8.1">
+      <point x="73.0" y="-0.0" />
+      <point x="-35.0" y="-0.0" />
+    </edge>
+    <edge source="org.springframework:spring-core:jar:4.2.7.RELEASE" target="org.springframework:spring-core:jar:4.2.7.RELEASE/commons-logging:commons-logging:jar:1.2">
+      <point x="50.0" y="-0.0" />
+      <point x="-69.5" y="-0.0" />
+    </edge>
+    <edge source="com.squareup.retrofit2:converter-gson:jar:2.3.0" target="com.squareup.retrofit2:retrofit:jar:2.3.0">
+      <point x="60.5" y="-7.5" />
+      <point x="362.0" y="313.0" />
+      <point x="442.0" y="120.5" />
+      <point x="-36.0" y="10.0" />
+    </edge>
+    <edge source="org.springframework:spring-context:jar:4.2.7.RELEASE" target="org.springframework:spring-core:jar:4.2.7.RELEASE">
+      <point x="58.0" y="3.75" />
+      <point x="1193.0" y="1641.6177560646897" />
+      <point x="-50.0" y="7.5" />
+    </edge>
+    <edge source="com.kee:JavaWebMaster:1.0-SNAPSHOT" target="ch.qos.logback:logback-classic:jar:1.1.8">
+      <point x="62.5" y="9.729729729729684" />
+      <point x="205.0" y="1508.5" />
+      <point x="-60.5" y="-0.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.1570265870862724" x="412.0" y="88.0" />
+  <SelectedNodes>
+    <node>com.kee:JavaWebMaster:1.0-SNAPSHOT</node>
+  </SelectedNodes>
   <Categories />
-  <VISIBILITY>Provided</VISIBILITY>
+  <VISIBILITY>All</VISIBILITY>
 </Diagram>
 
