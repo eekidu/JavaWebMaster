@@ -16,42 +16,73 @@
     -->
     <!--<mvc:annotation-driven/>-->
 
-    <mvc:annotation-driven>
+    <!--  <mvc:annotation-driven>
+          <mvc:message-converters>
+              <bean class="org.springframework.http.converter.StringHttpMessageConverter">
+                  <property name="writeAcceptCharset" value="false"/>
+                  <property name="supportedMediaTypes">
+                      <list>
+                          <value>text/plain;charset=UTF-8</value>
+                      </list>
+                  </property>
+              </bean>
+              <bean class="org.springframework.http.converter.ByteArrayHttpMessageConverter"/>
 
+
+              <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+                  <property name="supportedMediaTypes">
+                      <list>
+                          <value>text/html;charset=UTF-8</value>
+                          <value>text/json;charset=UTF-8</value>
+                          <value>application/json;charset=UTF-8</value>
+                      </list>
+                  </property>
+                  &lt;!&ndash; 处理responseBody 里面日期类型 &ndash;&gt;
+                  <property name="objectMapper">
+                      <bean class="com.fasterxml.jackson.databind.ObjectMapper">
+                          <property name="dateFormat">
+                              <bean class="java.text.SimpleDateFormat">
+                                  <constructor-arg type="java.lang.String" value="yyyy-MM-dd HH:mm:ss"/>
+                              </bean>
+                          </property>
+                      </bean>
+                  </property>
+              </bean>
+          </mvc:message-converters>
+      </mvc:annotation-driven>-->
+
+    <!--使用Gson进行json解析-->
+    <bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
+        <property name="converters">
+            <set>
+                <bean class="com.kee.base.MyGsonConverter"/>
+            </set>
+        </property>
+    </bean>
+
+    <mvc:annotation-driven conversion-service="conversionService">
         <mvc:message-converters>
             <bean class="org.springframework.http.converter.StringHttpMessageConverter">
                 <property name="writeAcceptCharset" value="false"/>
                 <property name="supportedMediaTypes">
                     <list>
-                        <value>text/plain;charset=UTF-8</value>
+                        <value>text/html;charset=UTF-8</value>
                     </list>
                 </property>
             </bean>
             <bean class="org.springframework.http.converter.ByteArrayHttpMessageConverter"/>
 
-
-            <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+            <bean class="com.kee.base.MyGsonConverter">
                 <property name="supportedMediaTypes">
                     <list>
-                        <value>text/html;charset=UTF-8</value>
+                        <!--<value>text/html;charset=UTF-8</value>-->
                         <value>text/json;charset=UTF-8</value>
                         <value>application/json;charset=UTF-8</value>
                     </list>
                 </property>
-                <!-- 处理responseBody 里面日期类型 -->
-                <property name="objectMapper">
-                    <bean class="com.fasterxml.jackson.databind.ObjectMapper">
-                        <property name="dateFormat">
-                            <bean class="java.text.SimpleDateFormat">
-                                <constructor-arg type="java.lang.String" value="yyyy-MM-dd HH:mm:ss"/>
-                            </bean>
-                        </property>
-                    </bean>
-                </property>
             </bean>
         </mvc:message-converters>
     </mvc:annotation-driven>
-
 
     <!-- 2.静态资源默认servlet配置
         (1)加入对静态资源的处理：js,gif,png

@@ -1,7 +1,7 @@
 package com.kee.service;
 
-import com.kee.dao.UserDao;
-import com.kee.entity.User;
+import com.kee.db.dao.UserDao;
+import com.kee.db.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -20,6 +20,7 @@ public class UserService {
             User user = new User();
             user.setName("haikuan" + i);
             userDao.inserUser(user);
+
         }
     }
 }

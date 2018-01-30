@@ -1,6 +1,6 @@
-package com.kee.dao;
+package com.kee.db.dao;
 
-import com.kee.entity.User;
+import com.kee.db.model.User;
 
 /**
  * Created by wosyo on 2018/1/3.

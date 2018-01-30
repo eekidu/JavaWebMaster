@@ -1,24 +1,31 @@
-package com.kee.dao;
+package com.kee.db;
 
-import com.alibaba.druid.sql.builder.impl.SQLSelectBuilderImpl;
 import com.kee.BaseTest;
-import com.kee.entity.User;
+import com.kee.db.dao.UserDao;
+import com.kee.db.model.User;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.awt.*;
 import java.io.IOException;
 
 
-
 /**
  * Created by wosyo on 2018/1/3.
  */
-public class UserDaoTest extends BaseTest{
+public class UserDaoTest extends BaseTest {
     @Autowired
     UserDao userDao;
+
+    @Test
+    public void inserOneUser() throws Exception {
+        User user = new User();
+        user.setName("kee");
+        int i = userDao.inserUser(user);
+        System.out.println(i);
+    }
+
 
     @Transactional
     @Test
@@ -26,9 +33,9 @@ public class UserDaoTest extends BaseTest{
         long l = System.currentTimeMillis();
         for (int i = 0; i < 5 * 10000; i++) {
             User user = new User();
-            user.setName("haikuan"+i);
+            user.setName("haikuan" + i);
             int j = userDao.inserUser(user);
-            System.out.println(i+"");
+            System.out.println(i + "");
         }
         long end = System.currentTimeMillis();
         System.out.println(end - l);
@@ -42,9 +49,9 @@ public class UserDaoTest extends BaseTest{
             new Thread(new Runnable() {
                 public void run() {
                     for (int i = 0; i < 1 * 10000; i++) {
-                        user.setName(Thread.currentThread().getName()+"haikuan"+i);
+                        user.setName(Thread.currentThread().getName() + "haikuan" + i);
                         int j = userDao.inserUser(user);
-                        System.out.println(i+"");
+                        System.out.println(i + "");
                     }
                 }
             }).start();

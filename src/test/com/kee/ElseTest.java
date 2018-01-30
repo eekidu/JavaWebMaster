@@ -1,9 +1,9 @@
 package com.kee;
 
+import com.kee.controller.ApiController;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 
 
 /**
@@ -25,7 +25,7 @@ public class ElseTest extends BaseTest {
     }
 
     @Test
-    public void testSql(){
-
+    public void testSql() {
+        System.out.println("hah");
     }
 }

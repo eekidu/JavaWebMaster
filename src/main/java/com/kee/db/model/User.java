@@ -1,4 +1,4 @@
-package com.kee.entity;
+package com.kee.db.model;
 
 
 public class User {
