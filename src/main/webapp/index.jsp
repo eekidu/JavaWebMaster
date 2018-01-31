@@ -25,7 +25,8 @@
     }
 </script>
 
-<button type="button" onclick="myFunction()">点击这里</button>
+<button type="button" onclick="window.location.href='/html/index.html'">index.html</button>
+<button type="button" onclick="window.location.href='/html/testJS.html'">testJS</button>
 <button type="button" onclick="myFunction1()">点击这里</button>
 
 </body>

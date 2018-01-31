@@ -1,0 +1,32 @@
+<html lang="zn">
+<head>
+    <meta charset="UTF-8">
+    <title>登录</title>
+</head>
+<body>
+<label>姓名：<input id="inputName" type="text"></label>
+<label>密码：<input id="inputPassword" type="password"></label><br>
+<button type="button" onclick="userLogin()">登录</button>
+<button type="button" onclick="myFunction()">点击这里</button>
+<p id="demo">A Paragraph.</p>
+
+<script type="text/javascript">
+    function userLogin() {
+        var inputName = document.getElementById('inputName');
+        var userName = inputName.value;
+
+        var inputPassword = document.getElementById('inputPassword');
+        var userPassword = inputPassword.value;
+
+        alert("登录！")
+        console.log("userName = " + userName + " userPassword = " + userPassword);
+        window.location.href = "/api/hello?date=" + userName;
+    }
+
+    function myFunction() {
+        document.getElementById("demo").innerHTML = "My First JavaScript Function";
+    }
+</script>
+
+</body>
+</html>

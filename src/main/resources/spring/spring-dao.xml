@@ -31,7 +31,7 @@
     </bean>
 
 
-    <!-- 配置druid监控spring jdbc -->
+    <!-- 配置druid监控spring jdbc  https://github.com/alibaba/druid/wiki/配置_Druid和Spring关联监控配置-->
     <bean id="druid-stat-interceptor"
           class="com.alibaba.druid.support.spring.stat.DruidStatInterceptor">
     </bean>

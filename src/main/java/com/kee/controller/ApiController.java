@@ -34,6 +34,7 @@ public class ApiController {
     @ResponseBody
     @RequestMapping(value = "hello")
     public ResultBean HelloWord(Date date, Long date2, HttpServletResponse httpServletResponse) {
+
         ResultBean resultBean = ResultBean.getDefaultResultBean();
         resultBean.addExtraInfo("ChineseTest", "中文测试");
         resultBean.addExtraInfo("DateTest", new Date());
