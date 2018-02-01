@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>TestVue</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script type="text/javascript">
+        window.onload = function () {
+            var tempString = 'Hello Vue111!';
+            var app = new Vue({
+                el: '#app',
+                data: {
+                    message: tempString
+                }
+            })
+
+            var app2 = new Vue({
+                el: '#app-2',
+                data: {
+                    message: '页面加载于 ' + new Date().toLocaleString()
+                }
+            });
+        }
+
+        function chanage() {
+            var num = 'caohaikan';
+            if (isNaN(num)) {
+                alert("不是一个数字");
+            }
+            document.write('<h1>这是一个标题</h1>');
+        }
+
+        function changeImage() {
+            console.log("执行");
+            var element = document.getElementById('lightImag')
+            if (element.src.match('pic_bulboff')) {
+                element.src = "../resources/image/pic_bulbon.gif";
+                console.log("开灯");
+            } else {
+                console.log("关灯");
+                element.src = "../resources/image/pic_bulboff.gif";
+            }
+        }
+
+
+    </script>
+</head>
+<body>
+<div id="app">
+    {{ message }}
+</div>
+<div id="app-2">
+  <span v-bind:title="message">
+    鼠标悬停几秒钟查看此处动态绑定的提示信息！
+  </span>
+</div>
+<button type="button" onclick="chanage()">输出流</button>
+<!--开关灯-->
+<img id="lightImag" src="../resources/image/pic_bulboff.gif" width="100" height="180" onclick="changeImage()">
+<button type="button" onclick="haha()">haha</button>
+<script>
+    function haha() {
+        alert(16 + "caohaikuan");
+    }
+    document.write
+    ("你好世界!");
+    document.write("<h1>这是一个标题</h1>");
+    document.write("<p>这是一个段落</p>");
+
+    //    var array = new Array();
+    //    array[0] = "kee";
+    //    array[1] = "kiee"
+    //    array[2] = "ksee"
+
+    //    var array = new Array("kee", "kiee", "ksee");
+    var array = ["kee", "kiee", "ksee"];
+
+    for (var i = 0; i < array.length; i++) {
+        document.write("<h1>" + array[i] + "</h1>");
+    }
+
+    var peason = {name: 'caohiakuan', age: 16}
+    window.document.write(peason.name + "  " + peason['age'])
+
+    var number = new Number();
+    window.document.write("num  :" + number);
+
+    const Test = param => {
+        return param;
+    }
+
+    console.log(Test('hello'));   // hello
+
+</script>
+</body>
+</html>

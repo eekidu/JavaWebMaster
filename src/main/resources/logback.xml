@@ -33,8 +33,8 @@
 
     <!-- 日志输出级别 TRACE、DEBUG、INFO、WARN 和 ERROR-->
     <!--STDOUT 标准输出打印在控制台 FILE 输出到文件-->
-    <root level="INFO">
-        <!--<appender-ref ref="STDOUT"/>-->
-        <appender-ref ref="FILE"/>
+    <root level="DEBUG">
+        <appender-ref ref="STDOUT"/>
+        <!--<appender-ref ref="FILE"/>-->
     </root>
 </configuration>

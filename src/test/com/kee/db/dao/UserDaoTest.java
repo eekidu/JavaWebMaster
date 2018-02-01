@@ -1,4 +1,4 @@
-package com.kee.db;
+package com.kee.db.dao;
 
 import com.kee.BaseTest;
 import com.kee.db.dao.UserDao;
