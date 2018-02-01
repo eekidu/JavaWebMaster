@@ -4,6 +4,7 @@ import com.kee.utill.IPUtil;
 import okhttp3.*;
 import org.junit.Test;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.Date;
 import java.util.List;
@@ -47,6 +48,30 @@ public class ApiTest {
         Response execute = call.execute();
         System.out.println(execute.body().string());
     }
+
+    //13832003776|e7585fe7a2c47ada0c36afa9159526a3
+    @Test
+    public void TestDiabesenLogin() throws IOException {
+        FormBody formBody = new FormBody.Builder().add("username", "admin")
+                .add("password", "admin12345")
+                .build();
+        Request request = new Request.Builder().post(formBody).url("http://192.168.8.143:9080/bms/manage/systemlogin")
+                .addHeader("User-Agent", IPUtil.getWeixinClient())
+                .addHeader("X-Forwarded-For", IPUtil.getHanDanRandomIp())
+                .build();
+        Call call = okHttpClient.newCall(request);
+        Response response = call.execute();
+        System.out.println(response);
+        System.out.println(response.body().string());
+    }
+//    D:\WorkSpace\JavaWeb\JavaWebMaster\src\main\webapp\resources\image\demoimage.png
+    @Test
+    public void TestImageStream(){
+        File file = new File("resources/image/demoimage.png");
+        System.out.println(file.exists());
+
+    }
+
 
     /**
      * 1000W: js 690 java 8

@@ -13,21 +13,20 @@
     <context:property-placeholder location="classpath:jdbc.properties"/>
 
     <!-- 2.数据库连接池 druid-->
-    <bean id="dataSource"
-          class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
+    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
         <!-- 基本属性 url、user、password -->
-        <property name="url" value="${url}" />
-        <property name="username" value="${user}" />
-        <property name="password" value="${password}" />
+        <property name="url" value="${url}"/>
+        <property name="username" value="${user}"/>
+        <property name="password" value="${password}"/>
 
         <!-- 配置初始化大小、最小、最大 -->
-        <property name="initialSize" value="1" />
-        <property name="minIdle" value="10" />
-        <property name="maxActive" value="30" />
+        <property name="initialSize" value="1"/>
+        <property name="minIdle" value="10"/>
+        <property name="maxActive" value="30"/>
 
         <!--https://github.com/alibaba/druid/wiki/配置_StatFilter-->
-        <property name="filters" value="mergeStat" />
-        <property name="connectionProperties" value="druid.stat.slowSqlMillis=5000" /><!--慢SQL记录-->
+        <property name="filters" value="mergeStat"/>
+        <property name="connectionProperties" value="druid.stat.slowSqlMillis=5000"/><!--慢SQL记录-->
     </bean>
 
 
@@ -47,7 +46,7 @@
 
     <aop:config proxy-target-class="true">
         <aop:advisor advice-ref="druid-stat-interceptor"
-                     pointcut-ref="druid-stat-pointcut" />
+                     pointcut-ref="druid-stat-pointcut"/>
     </aop:config>
 
 

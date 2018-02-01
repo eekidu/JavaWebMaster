@@ -5,6 +5,7 @@ import com.kee.base.api.ResultBean;
 import com.kee.service.UserService;
 import com.kee.utill.IPUtil;
 import com.kee.utill.ServletUtils;
+import com.kee.utill.ZxingHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,9 +15,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.ServletContext;
+import javax.servlet.ServletOutputStream;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import java.io.*;
 import java.util.Date;
 
 /**
@@ -34,7 +39,6 @@ public class ApiController {
     @ResponseBody
     @RequestMapping(value = "hello")
     public ResultBean HelloWord(Date date, Long date2, HttpServletResponse httpServletResponse) {
-
         ResultBean resultBean = ResultBean.getDefaultResultBean();
         resultBean.addExtraInfo("ChineseTest", "中文测试");
         resultBean.addExtraInfo("DateTest", new Date());
@@ -49,9 +53,26 @@ public class ApiController {
         return resultBean;
     }
 
+    @ResponseBody
+    @RequestMapping(value = "qr")
+    public void returnStream(HttpServletRequest request, HttpServletResponse httpServletResponse, String content) {
+        try {
+            ServletOutputStream outputStream = httpServletResponse.getOutputStream();
+            // 禁止图像缓存。
+            httpServletResponse.setHeader("Pragma", "no-cache");
+            httpServletResponse.setHeader("Cache-Control", "no-cache");
+            httpServletResponse.setDateHeader("Expires", 0);
+            httpServletResponse.setContentType("image/jpeg");
+            ZxingHandler.encode2ToStream(content, 400, 400, outputStream);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
     /**
      * 读取所有cookie
-     * 注意二、从客户端读取Cookie时，包括maxAge在内的其他属性都是不可读的，也不会被提交。浏览器提交Cookie时只会提交name与value属性。maxAge属性只被浏览器用来判断Cookie是否过期
      *
      * @param request
      * @param response

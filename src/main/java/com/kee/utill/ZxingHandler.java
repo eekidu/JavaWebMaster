@@ -8,9 +8,13 @@ import com.google.zxing.common.HybridBinarizer;
 import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
 
 import javax.imageio.ImageIO;
+import javax.imageio.stream.ImageInputStream;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.OutputStream;
+import java.util.HashMap;
 import java.util.Hashtable;
+import java.util.Map;
 
 /**
  * Created by kee on 2018/1/30.
@@ -95,6 +99,32 @@ public class ZxingHandler {
     }
 
     /**
+     * 生成二维码流
+     *
+     * @param contents
+     * @param width
+     * @param height
+     * @param outputStream
+     */
+    public static void encode2ToStream(String contents, int width, int height, OutputStream outputStream) {
+        Hashtable<EncodeHintType, Object> hints = new Hashtable<EncodeHintType, Object>();
+        // 指定纠错等级
+        hints.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.L);
+        // 指定编码格式
+        hints.put(EncodeHintType.CHARACTER_SET, "GBK");
+        try {
+            BitMatrix bitMatrix = new MultiFormatWriter().encode(contents,
+                    BarcodeFormat.QR_CODE, width, height, hints);
+
+            MatrixToImageWriter
+                    .writeToStream(bitMatrix, "png", outputStream);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
      * 二维码解码
      *
      * @param imgPath
@@ -122,11 +152,14 @@ public class ZxingHandler {
         return null;
     }
 
+
     /**
      * @param args
      */
     public static void main(String[] args) {
 
+
+//        D:\WorkSpace\JavaWeb\JavaWebMaster\target\test01.jpg
         // 条形码
         String imgPath = "target\\zxing_EAN13.png";
         String contents = "6923450657713";

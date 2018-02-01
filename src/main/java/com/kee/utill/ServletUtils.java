@@ -31,6 +31,8 @@ public class ServletUtils {
             String parameter = request.getParameter(pname);
             System.out.println(pname + ":" + parameter);
         }
+        // 注意二、从客户端读取Cookie时，包括maxAge在内的其他属性都是不可读的，也不会被提交。
+        // 浏览器提交Cookie时只会提交name与value属性。maxAge属性只被浏览器用来判断Cookie是否过期
         System.out.println("/--------------  Cookie  --------------/");
         Cookie[] cookies = request.getCookies();
         if (cookies != null && cookies.length > 0) {

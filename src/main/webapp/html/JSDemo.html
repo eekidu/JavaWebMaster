@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JSDemo</title>
+    <script src="../resources/js/kee.js"></script>
+    <style type="text/css">
+        .myButton {
+            width: 60px;
+            height: auto;
+        }
+
+    </style>
+</head>
+<body>
+<button class="myButton" onclick=""></button>
+<button class="myButton" onclick="useStrict()">use strict</button>
+<p id="errorMessage"></p>
+
+<script>
+
+
+    function useStrict() {
+        "use strict";
+        try {
+            x = 5;
+            console.log(5);
+        }catch (message){
+            error(message);
+        }
+    }
+
+    function error(message) {
+        var elementById = document.getElementById('errorMessage');
+        elementById.innerHTML=message;
+    }
+
+</script>
+</body>
+</html>
