@@ -53,24 +53,6 @@ public class ApiController {
         return resultBean;
     }
 
-    @ResponseBody
-    @RequestMapping(value = "qr")
-    public void returnStream(HttpServletRequest request, HttpServletResponse httpServletResponse, String content) {
-        try {
-            ServletOutputStream outputStream = httpServletResponse.getOutputStream();
-            // 禁止图像缓存。
-            httpServletResponse.setHeader("Pragma", "no-cache");
-            httpServletResponse.setHeader("Cache-Control", "no-cache");
-            httpServletResponse.setDateHeader("Expires", 0);
-            httpServletResponse.setContentType("image/jpeg");
-            ZxingHandler.encode2ToStream(content, 400, 400, outputStream);
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-
     /**
      * 读取所有cookie
      *

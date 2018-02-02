@@ -2,7 +2,6 @@
 <head>
     <meta charset="UTF-8">
 
-
 </head>
 <body>
 <H1>IDEA</H1>
@@ -15,6 +14,8 @@
 <button id="button01" type="button" onclick="document.getElementById('button01').style.backgroundColor='red',test0()">
     点击变色
 </button>
+
+<button onclick=""> 方法写法</button>
 
 <button type="button" onclick="calc1()">calc1()</button>
 <button type="button" onclick="calc2()">calc2</button>
@@ -39,14 +40,14 @@
         alert(sum);
     }
 
-    function calc1(){
-        var value=0;
-        var start  = new Date().getTime();
+    function calc1() {
+        var value = 0;
+        var start = new Date().getTime();
         for (var i = 0; i < 1000; i++) {
             for (var j = 0; j < 1000; j++) {
                 for (var k = 0; k < 1000; k++) {
                     for (var k2 = 0; k2 < 10; k2++) {
-                        value+=k2*k+j+i;
+                        value += k2 * k + j + i;
                     }
                 }
             }
@@ -57,17 +58,17 @@
     }
 
 
-    function calc2(){
-        var  value= 0,temp1= 0,temp2= 0,temp3= 0,temp4= 0,temp5= 0,j=0;
-        var  start = new Date().getTime();
-        for (var i = 0; i < 1000000; i++,j--) {
-            temp1+=i*j;
-            temp2+=i;
-            temp3+=j;
-            temp4+=i*i;
-            temp5+=j*j;
+    function calc2() {
+        var value = 0, temp1 = 0, temp2 = 0, temp3 = 0, temp4 = 0, temp5 = 0, j = 0;
+        var start = new Date().getTime();
+        for (var i = 0; i < 1000000; i++, j--) {
+            temp1 += i * j;
+            temp2 += i;
+            temp3 += j;
+            temp4 += i * i;
+            temp5 += j * j;
         }
-        value=(temp1-temp2*temp3/1000000)/Math.sqrt((temp4-temp2*temp2/1000000)*(temp5-temp3*temp3/1000000));
+        value = (temp1 - temp2 * temp3 / 1000000) / Math.sqrt((temp4 - temp2 * temp2 / 1000000) * (temp5 - temp3 * temp3 / 1000000));
         var end = new Date().getTime();
         console.log(value);
         console.log(end - start);

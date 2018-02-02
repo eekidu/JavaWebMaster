@@ -15,7 +15,6 @@ var Log = {
 
 
 
-
 var Person = {
     name: "caohaikuan",
     age: 16,

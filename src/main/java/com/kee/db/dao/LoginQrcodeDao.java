@@ -2,6 +2,8 @@ package com.kee.db.dao;
 
 import com.kee.db.model.LoginQrcode;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 //import org.apache.ibatis.annotations.Param;
 
 /**
@@ -11,7 +13,9 @@ public interface LoginQrcodeDao {
 
     int insert(LoginQrcode loginQrcode);
 
-    LoginQrcode selectLoginQrcode(@Param("qrcode") String qrcode);
+    LoginQrcode selectLoginQrcodeByQrcode(@Param("qrcode") String qrcode);
 
     int update(LoginQrcode loginQrcode);
+
+    List<LoginQrcode> selectLoginQrcodeByState(Integer state);
 }

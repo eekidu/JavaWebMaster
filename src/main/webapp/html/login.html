@@ -3,11 +3,20 @@
     <meta charset="UTF-8">
     <title>登录</title>
     <script src="../resources/js/kee.js"></script>
+    <script src="http://cdn.static.runoob.com/libs/jquery/1.10.2/jquery.min.js"></script>
 </head>
 <body>
 <label>姓名：<input id="inputName" type="text"></label>
 <label>密码：<input id="inputPassword" type="password"></label><br>
 <button type="button" onclick="userLogin()">登录</button>
+
+<img src="/login/getQrcode">
+
+
+<button> 登录是否成功</button>
+
+
+<br>
 <button type="button" onmousemove="mouseAction.onMouseMove()"
         onmouseout="mouseAction.onMouseOut()"
         onload="mouseAction.onLoad()"
@@ -18,6 +27,16 @@
 <p id="demo">A Paragraph.</p>
 
 <script>
+
+    $("button").click(function () {
+        var elementById = document.getElementById("demo");
+        elementById.innerHTML = "检查中……";
+        $.get("/login/looperQrcode", function (data, status) {
+            elementById.innerHTML = "数据: " + data + "\n状态: " + status;
+        });
+    });
+
+
     var mouseAction = {
         onMouseMove: function () {
             console.log('onMouseMove');

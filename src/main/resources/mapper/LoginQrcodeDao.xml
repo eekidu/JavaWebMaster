@@ -8,11 +8,17 @@
     <insert id="insert">
         INSERT INTO login_qrcode (qrcode) VALUE (#{qrcode});
     </insert>
-    <select id="selectLoginQrcode" resultType="com.kee.db.model.LoginQrcode">
+    <select id="selectLoginQrcodeByQrcode" resultType="com.kee.db.model.LoginQrcode">
         SELECT *
         FROM login_qrcode
         WHERE qrcode = #{qrcode};
     </select>
+    <select id="selectLoginQrcodeByState" resultType="com.kee.db.model.LoginQrcode">
+        SELECT *
+        FROM login_qrcode
+        WHERE state = #{state};
+    </select>
+
     <update id="update">
         UPDATE login_qrcode
         SET state = #{state}

@@ -2,7 +2,6 @@ package com.kee.db.dao;
 
 import com.kee.BaseTest;
 import com.kee.db.model.LoginQrcode;
-import com.kee.db.model.User;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -27,14 +26,14 @@ public class LoginQrcodeDaoTest extends BaseTest {
 
     @Test
     public void selectLoginQrcode() throws Exception {
-        LoginQrcode loginQrcode = loginQrcodeDao.selectLoginQrcode("33439d13-bc8a-4d35-8676-91fc783210aa");
+        LoginQrcode loginQrcode = loginQrcodeDao.selectLoginQrcodeByQrcode("1876cf3f-9a65-4268-914d-51579beb9d2d");
         System.out.println(loginQrcode);
     }
 
     @Test
     public void update() throws Exception {
         LoginQrcode loginQrcode = new LoginQrcode();
-        loginQrcode.setQrcode("33439d13-bc8a-4d35-8676-91fc783210aa");
+        loginQrcode.setQrcode("1876cf3f-9a65-4268-914d-51579beb9d2d");
         loginQrcode.setState(1);
         loginQrcodeDao.update(loginQrcode);
     }
