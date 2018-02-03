@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../resources/js/kee.js"></script>
+    <script src="http://cdn.static.runoob.com/libs/jquery/1.10.2/jquery.min.js"></script>
+</head>
+<body>
+<p>p0</p>
+<p id="p1">p1</p>
+<p class="myp">p2</p>
+<button>点击我</button>
+<script>
+    $(document).ready(function () {
+        $("p").text("加载完成");
+        $("p").on("click", function () {
+            Log.d("kee");
+            $(this).hide();
+        })
+
+    });
+    $("button").click(function () {
+        $("#p1").text("id选择器");
+        $(".myp").text("类选择器");
+    });
+</script>
+
+</body>
+</html>

@@ -11,7 +11,7 @@ import java.util.List;
  */
 public interface LoginQrcodeDao {
 
-    int insert(LoginQrcode loginQrcode);
+    long insert(LoginQrcode loginQrcode);
 
     LoginQrcode selectLoginQrcodeByQrcode(@Param("qrcode") String qrcode);
 
