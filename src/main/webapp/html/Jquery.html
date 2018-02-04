@@ -11,20 +11,4 @@
 <p id="p1">p1</p>
 <p class="myp">p2</p>
 <button>点击我</button>
-<script>
-    $(document).ready(function () {
-        $("p").text("加载完成");
-        $("p").on("click", function () {
-            Log.d("kee");
-            $(this).hide();
-        })
-
-    });
-    $("button").click(function () {
-        $("#p1").text("id选择器");
-        $(".myp").text("类选择器");
-    });
-</script>
-
 </body>
-</html>
