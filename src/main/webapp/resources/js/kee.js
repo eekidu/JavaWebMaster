@@ -10,9 +10,11 @@
 var Log = {
     d: function (message) {
         console.log(message)
+    },
+    m: function (message) {
+        console.log("-----" + message)
     }
 }
-
 
 
 var Person = {

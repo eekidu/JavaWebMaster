@@ -5,10 +5,49 @@
     <title>Title</title>
     <script src="../resources/js/kee.js"></script>
     <script src="http://cdn.static.runoob.com/libs/jquery/1.10.2/jquery.min.js"></script>
+    <link type="text/css" rel="stylesheet" href="../resources/css/kee.css">
 </head>
 <body>
 <p>p0</p>
 <p id="p1">p1</p>
-<p class="myp">p2</p>
-<button>点击我</button>
+<p >p2</p>
+<button id="button01">点击我</button>
+<button id="button02">点击我</button>
+<div></div>
+<br>
+
 </body>
+<script>
+
+    Log.d("</body>下的script。");
+    $(document).ready(function () {
+        for (var i = 0; i < 5; i++) {
+            $("body").append("<div></div>");
+        }
+
+        Log.d("$(document).ready()");
+
+        $("div").on("click", function () {
+            this.hide();
+        })
+
+        function click01() {
+            Log.m("click01");
+            $("p").css("background-color", "red");
+            $("#button02").trigger("click");
+            $("#button02").click();
+        }
+
+        function click02() {
+            Log.m("click02")
+        }
+
+        $("#button01").on("click", click01);
+        $("#button02").on("click", click02);
+        $("#button02").on("focus", click02);
+
+    });
+
+
+</script>
+</html>

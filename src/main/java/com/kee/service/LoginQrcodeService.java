@@ -26,7 +26,7 @@ public class LoginQrcodeService {
         System.out.println("LoginQrcodeService = " + Thread.currentThread() + "  ;" + this.toString());
         LoginQrcode loginQrcode = new LoginQrcode();
         loginQrcode.setQrcode(UUID.randomUUID().toString());
-        int insert = loginQrcodeDao.insert(loginQrcode);
+        long insert = loginQrcodeDao.insert(loginQrcode);
         if (insert != 1) {
             throw new RuntimeException("数据库异常");
         }
