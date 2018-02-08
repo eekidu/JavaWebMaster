@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>JSDemo</title>
+    <link type="text/css" href="../resources/css/kee.css" rel="stylesheet">
+    <script src="http://cdn.static.runoob.com/libs/jquery/1.10.2/jquery.min.js"></script>
     <script src="../resources/js/kee.js"></script>
     <style type="text/css">
         .myButton {
@@ -16,6 +18,7 @@
 <button class="myButton" onclick=""></button>
 <button class="myButton" onclick="useStrict()">use strict</button>
 <p id="errorMessage"></p>
+<div></div>
 
 <script>
 
@@ -23,7 +26,7 @@
     function useStrict() {
         "use strict";
         try {
-            x = 5;
+           let x = 5;
             console.log(5);
         }catch (message){
             error(message);
@@ -34,6 +37,15 @@
         var elementById = document.getElementById('errorMessage');
         elementById.innerHTML=message;
     }
+
+    $("button").click(function(){
+        $("div").animate({
+            left:'250px',
+            opacity:'0.5',
+            height:'150px',
+            width:'150px'
+        });
+    });
 
 </script>
 </body>
