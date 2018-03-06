@@ -37,19 +37,20 @@ public class ServletUtils {
         Cookie[] cookies = request.getCookies();
         if (cookies != null && cookies.length > 0) {
             for (Cookie cookie : cookies) {
-                System.out.println(cookie.getName() + ":{value:" + cookie.getValue()+"}");
+                System.out.println(cookie.getName() + ":" + cookie.getValue());
             }
         } else {
             System.out.println("No Cookie");
         }
+        System.out.println("****************  END  *****************");
     }
 
-    public static void showResponse( HttpServletResponse response){
+    public static void showResponse(HttpServletResponse response) {
         System.out.println("*****************  showResponse" + new Date().toLocaleString() + "*****************");
         Collection<String> headerNames = response.getHeaderNames();
         for (String headerName : headerNames) {
             String header = response.getHeader(headerName);
-            System.out.println(headerName+" : "+header);
+            System.out.println(headerName + " : " + header);
         }
     }
 

@@ -27,7 +27,8 @@ import java.util.concurrent.TimeUnit;
 public class BaseTest {
 
     public static long DEFAULT_TIME_OUT = 30;
-    public static OkHttpClient okHttpClient = new OkHttpClient.Builder().connectTimeout(DEFAULT_TIME_OUT, TimeUnit.SECONDS)
+    public static OkHttpClient okHttpClient = new OkHttpClient.Builder()
+            .connectTimeout(DEFAULT_TIME_OUT, TimeUnit.SECONDS)
             //设置写超时
             .writeTimeout(DEFAULT_TIME_OUT, TimeUnit.SECONDS)
             //设置读超时
