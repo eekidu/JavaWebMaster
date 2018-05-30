@@ -56,6 +56,9 @@ public class OkHttpTest extends BaseTest {
         Response execute1 = call1.execute();
         System.out.println(execute1.body().string());
 
+
+        client.connectionPool().connectionCount();
+
     }
 
     @Test

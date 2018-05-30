@@ -16,16 +16,74 @@ import java.util.concurrent.TimeUnit;
  */
 public class VoteTest extends BaseTest {
 
+    @Test
+    public void getCookie() throws IOException {
+//        String targetURL = "http://2018.weireju.com/app/index.php?c=entry&do=show&m=gtf_xiaof_toupiao&i=6&sid=21&id=318&wxref=mp.weixin.qq.com&from=timeline";
+        String targetURL = "http://2018.weireju.com/app/index.php?i=6&c=utility&a=visit&do=showjs&m=gtf_xiaof_toupiao";
+        Request request = new Request.Builder().url(targetURL)
+                .get()
+                .addHeader("User-Agent", IPUtil.getWeixinClient())
+                .addHeader("User-Agent", ": Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 Safari/537.36 MicroMessenger/6.5.2.501 NetType/WIFI WindowsWechat QBCore/3.43.691.400 QQBrowser/9.0.2524.400")
+                .addHeader("X-Forwarded-For", IPUtil.getHanDanRandomIp()).build();
+
+
+        Call call = okHttpClient.newCall(request);
+        Response execute = call.execute();
+        String cookies = execute.header("Cookies");
+        System.out.println("Cookies = " + cookies);
+        Headers headers = execute.headers();
+        for (String s : headers.names()) {
+            System.out.println(s);
+        }
+        String string = execute.body().string();
+        System.out.println("返回是：" + string);
+    }
+
+
+    /**
+     * 107:您今天已经给编号61投过票了，明天再来吧
+     *
+     * @throws IOException
+     */
+    @Test
+    public void toupiaoOne() throws IOException {
+//        http://2018.weireju.com/app/index.php?c=entry&do=vote&m=gtf_xiaof_toupiao&i=6&type=good&id=213
+        String targetURL = "http://2018.weireju.com/app/index.php?c=entry&do=vote&m=gtf_xiaof_toupiao&i=6&type=good&id=318";
+        // 微信web
+//        String session = "8a839a041da2727a395e4f7b01893e72";
+//        String yunsuo = "c985d2a30fd43cefaeb4fb1f07e5b29e";
+
+// 手机微信
+//        String session = "98348b822020b08f7db107431ca70462";
+//        String yunsuo = "02a83fcc095cf317b72c7f7fcc250a1e";
+
+        String session = "98348b822020b08f7db107431ca70462";
+        String yunsuo = "55fb9d05938a2953600ef7bdae012e21";
+
+//         String session = "b3531a192ab1733cc2593af308327e90";
+//        String yunsuo = "4024d0979f5f444b73e1794106fe5e62";
+        Request request = new Request.Builder().url(targetURL)
+                .get()
+                .addHeader("User-Agent", IPUtil.getWeixinClient())
+                .addHeader("Cookie", "PHPSESSID=" + session + "; yunsuo_session_verify=" + yunsuo)
+                .addHeader("X-Forwarded-For", IPUtil.getHanDanRandomIp()).build();
+
+        Call call = okHttpClient.newCall(request);
+        Response execute = call.execute();
+        String string = execute.body().string();
+        System.out.println("返回是：" + string);
+    }
+
 
     @Test
     public void test1223() throws IOException, InterruptedException {
         for (int i = 0; i < 600
                 ; i++) {
-            int mid = 1000+new Random().nextInt(40000);
+            int mid = 1000 + new Random().nextInt(40000);
             FormBody formBody = new FormBody.Builder()
                     .add("vid", "70")
                     .add("vpid", "2388")
-                    .add("mid", mid+"")
+                    .add("mid", mid + "")
                     .add("wxcid", "12")//固定
                     .add("mdstr", "E45E000D76A7C5A461EEBF9701C4F543")//固定
                     .build();
